@@ -15,10 +15,22 @@ module.exports = {
         type: Sequelize.TEXT
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+        model: 'Users',
+        key: 'id',
+        as: 'userId',
+        },
       },
       reviewerId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+        model: 'Reviewers',
+        key: 'id',
+        as: 'reviewerId',
+        },
       },
       createdAt: {
         allowNull: false,

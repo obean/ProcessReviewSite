@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Reviewer.hasMany(models.Review, {
+        foreignKey: 'reviewerId',
+      })
     }
   };
   Reviewer.init({
