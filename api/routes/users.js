@@ -3,7 +3,24 @@ var router = express.Router();
 var  models  = require('../models');
 const bcrypt = require('bcrypt');
 var passport = require('passport');
-
+var LocalStrategy = require('passport-local').Strategy;
+passport.use(new LocalStrategy(
+  function(username, password, cb) {
+    console.log(username, password)
+    models.User.findOne({
+      where: {
+        username: username
+      }, function(err, user) {
+        console.log("if this prints then its doing something after executing the search")
+        //bcrypt.compareSync(password, user.password);
+        if (err) {return cb(err); }
+        if (!user) {return cb(null, "false"); }
+      //  if (!isValid) {return cb(null, false)}
+        return cb(null, user)
+      }
+    
+    });
+}));
 
 
 // Start express, Sequelize generates models, established DB connection
