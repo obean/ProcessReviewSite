@@ -1,7 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
+// Adding Passport cookies/flash
+var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
+var session = require('express-session')
+//
 var logger = require('morgan');
 var cors = require('cors');
 const bodyParser = require('body-parser');
@@ -21,6 +26,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// adding Flash for auth.
+app.use(flash());
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
@@ -39,6 +47,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// Adding seesion/cookies
+app.use(session({ cookie: { maxAge: 60000 }, 
+  secret: 'woot',
+  resave: false, 
+  saveUninitialized: false}));
 
 
 // authentication 'local' strategy via Passport.
