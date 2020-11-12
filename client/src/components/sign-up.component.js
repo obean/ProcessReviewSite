@@ -35,6 +35,8 @@ export default class SignUp extends Component {
 
     render() {
         return (
+        <div className="auth-wrapper">
+          <div className="auth-inner">
             <form method='POST' action='http://localhost:9000/users/new'>
                 <h3>Sign Up</h3>
 
@@ -64,6 +66,8 @@ export default class SignUp extends Component {
                     Already registered <a href="#">sign in?</a>
                 </p>
             </form>
+          </div>
+        </div>
         );
     }
 }
