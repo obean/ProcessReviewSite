@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Redirect, withRouter } from 'react-router';
+import { Redirect } from 'react-router';
+import { withRouter } from 'react-router';
 
 export default class SignUp extends Component {
     constructor(props){
@@ -27,8 +28,8 @@ export default class SignUp extends Component {
     })
     .then((result) => result.json())
     .then((info) => {console.log(info)})
-    .then((e) => this.props.history.push("/profile"))
-    }
+    // this.props.history.push('/profile');    
+}
 
     
 
