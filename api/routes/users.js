@@ -14,11 +14,18 @@ router.get('/', async function(req, res, next) {
   
   const users = await models.User.findAll();
   
-  res.send(JSON.stringify(users, null, 2));
+  res.send(JSON.stringify(users));
 });
 
-router.post('/sign-up', function(req, res, next) {
-  res.send('respond with a resource');
+// router.post('/sign-up', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
+router.post('/new', async function(req, res, next) {
+  // console.log(req.body + 'req')
+ 
+  const user = await models.User.create({ firstName: req.body.firstName, lastName: req.body.lastName, password: 'password', email: req.body.email });
+  // res.send(JSON.stringify(user));  ;
 });
 
 // router.get('/sign-up', function(req, res, next) {
