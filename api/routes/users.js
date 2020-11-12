@@ -45,12 +45,23 @@ router.post('/new', async function(req, res, next) {
   
 });
 
-router.post('/login',
+router.post('/login', 
+  passport.authenticate('local', { successRedirect: '/', failureRedirect: 'http://localhost:3000/nope' }),
+  function(req, res) {
+    res => JSON.stringify(200);
+    //console.log(typeof req)
+  });
 
-  passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: 'http://localhost:3000/profile',
-                                   failureFlash: false })
-);
+  passport.serializeUser(function(user, cb) {
+    cb(null, user.id);
+  });
+  
+  passport.deserializeUser(function(id, cb) {
+    db.users.findById(id, function (err, user) {
+      if (err) { return cb(err); }
+      cb(null, user);
+    });
+  });
 
 
 
