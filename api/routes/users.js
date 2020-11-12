@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var  models  = require('../models');
 const bcrypt = require('bcrypt');
-
+var passport = require('passport');
 
 
 
@@ -28,7 +28,7 @@ router.post('/new', async function(req, res, next) {
   
 });
 
-app.post('/login',
+router.post('/login',
   passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: '/login',
                                    failureFlash: true })
