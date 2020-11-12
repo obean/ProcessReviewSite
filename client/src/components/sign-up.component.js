@@ -9,15 +9,16 @@ export default class SignUp extends Component {
             firstName: '',
             lastName: '',
             email: '',
+            password: '',
         }
     }
-    onChange = (e) => {
+    handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
       }
 
-    onSubmit = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault();
-        const {firstName, lastName, email} = this.state;
+        const {firstName, lastName, email, password} = this.state;
 
         fetch('http://localhost:9000/users/new', {
         method: "POST",
@@ -28,34 +29,33 @@ export default class SignUp extends Component {
     })
     .then((result) => result.json())
     .then((info) => {console.log(info)})
-    // this.props.history.push('/profile');    
 }
 
     
 
     render() {
         return (
-            <form method='POST' action='http://localhost:9000/users/new'>
+            <form onSubmit={this.handleSubmit}>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">
                     <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" name ="firstName"/>
+                    <input type="text" className="form-control" placeholder="First name" value={this.state.value} onChange={this.handleChange} name="firstName"/>
                 </div>
 
                 <div className="form-group">
                     <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" name="lastName" />
+                    <input type="text" className="form-control" placeholder="Last name" value={this.state.value} onChange={this.handleChange} name="lastName" />
                 </div>
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" name="email" />
+                    <input type="email" className="form-control" placeholder="Enter email" value={this.state.value} onChange={this.handleChange} name="email" />
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
+                    <input type="password" className="form-control" value={this.state.value} onChange={this.handleChange} placeholder="Enter password" />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
