@@ -6,7 +6,7 @@ export default class Login extends Component {
     constructor(props){
         super(props)
         this.state = {
-            email: '',
+            username: '',
             password: '',
         }
     }
@@ -16,7 +16,7 @@ export default class Login extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {email, password} = this.state;
+        const {username, password} = this.state;
 
         fetch('http://localhost:9000/users/login', {
         method: "POST",
@@ -39,12 +39,13 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" value={this.state.value} onChange={this.handleChange} name="email" />
+                    <input type="text" className="form-control" placeholder="Enter email" value={this.state.value} onChange={this.handleChange} name="username" />
+                    
                 </div>
 
                 <div className="form-group">
                     <label>Password</label>
-                    <input type="password" className="form-control" value={this.state.value} onChange={this.handleChange} placeholder="Enter password" />
+                    <input type="password" name="password" className="form-control" value={this.state.value} onChange={this.handleChange} placeholder="Enter password" />
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
