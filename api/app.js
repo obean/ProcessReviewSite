@@ -7,11 +7,16 @@ var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
 //
+
 var logger = require('morgan');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+//enabling CORS
+var cors = require('cors')
+//
 
 var app = express();
 
@@ -28,6 +33,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // adding Flash for auth.
 app.use(flash());
+// CORS enabled
+app.use(cors())
+//
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

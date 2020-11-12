@@ -29,6 +29,7 @@ router.post('/new', async function(req, res, next) {
 });
 
 router.post('/login',
+
   passport.authenticate('local', { successRedirect: '/',
                                    failureRedirect: 'http://localhost:3000/profile',
                                    failureFlash: false })
@@ -39,4 +40,5 @@ router.post('/login',
 // router.get('/sign-up', function(req, res, next) {
 //   res.send('respond with a resource');
 // });
+
 module.exports = router;
