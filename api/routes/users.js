@@ -30,7 +30,7 @@ router.post('/new', async function(req, res, next) {
 
 router.post('/login',
   passport.authenticate('local', { successRedirect: '/',
-                                   failureRedirect: '/login',
+                                   failureRedirect: 'http://localhost:3000/profile',
                                    failureFlash: false })
 );
 
