@@ -24,6 +24,13 @@ router.post('/new', async function(req, res, next) {
   // res.send(JSON.stringify(user));  ;
 });
 
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
+
+
 
 // router.get('/sign-up', function(req, res, next) {
 //   res.send('respond with a resource');
