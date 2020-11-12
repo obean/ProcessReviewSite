@@ -15,15 +15,15 @@ router.get('/', async function(req, res, next) {
   
   const users = await models.User.findAll();
   
-  res.send(JSON.stringify(users, null, 2));
+  res.send(JSON.stringify(users));
 });
 
 router.post('/new', async function(req, res, next) {
   // console.log(req.body + 'req')
  
-  console.log(req.body)
-  const user = await models.User.create({ firstName: req.body.firstName, lastName: req.body.lastName, email: req.body.email });
-  console.log(user);  ;
+
+  const user = await models.User.create({ firstName: req.body.firstName, lastName: req.body.lastName, password: 'password', email: req.body.email });
+  // res.send(JSON.stringify(user));  ;
 });
 
 
