@@ -22,8 +22,22 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Review.init({
-    booking_date: DataTypes.DATE,
-    description: DataTypes.TEXT,
+    booking_date: DataTypes.STRING,
+    general_feedback: DataTypes.STRING,
+    TDD_rating:  DataTypes.INTEGER,
+    TDD_description: DataTypes.STRING,
+    Fluency_rating:  DataTypes.INTEGER,
+    Fluency_description: DataTypes.STRING,
+    Debut_rating: DataTypes.INTEGER,
+    Debut_description: DataTypes.STRING,
+    Model_rating: DataTypes.INTEGER,
+    Model_description: DataTypes.STRING,
+    Refactor_rating: DataTypes.INTEGER,
+    Refactor_description: DataTypes.STRING,
+    Agile_rating: DataTypes.INTEGER,
+    Agile_description: DataTypes.STRING,
+    Maintainability_rating: DataTypes.INTEGER,
+    Maintainability_description: DataTypes.STRING,
     userId: DataTypes.INTEGER,
     reviewerId: DataTypes.INTEGER
   }, {
