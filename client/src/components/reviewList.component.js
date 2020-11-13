@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import {Link} from 'react-router-dom'
 
 function ReviewList() {
   useEffect(() => {
@@ -12,13 +12,19 @@ function ReviewList() {
     const data = await fetch('http://localhost:9000/reviews/all');
     const reviews = await data.json();
     console.log(reviews)
-    // setReviews(reviews.reviews)
+    setReviews(reviews)
   };
 
 
   return (
     <div>
-      <h1> yooo!</h1>
+       { reviews.map(review => (
+      <li key={review.id}>
+        <Link to={'reviews/'}>
+          {review.booking_date}
+          </Link>
+         </li>
+       ))}
     </div>
   );
 
