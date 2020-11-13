@@ -9,11 +9,62 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       booking_date: {
-        type: Sequelize.DATE
-      },
-      description: {
         type: Sequelize.TEXT
       },
+      general_feedback: {
+        type: Sequelize.TEXT
+      },
+
+      TDD_rating: {
+        type: Sequelize.INTEGER
+      },
+
+      TDD_description: {
+        type: Sequelize.TEXT
+      },
+
+      Fluency_rating:{
+        type: Sequelize.INTEGER
+      },
+      Fluency_description: {
+        type: Sequelize.TEXT
+      },
+
+      Debug_rating:{
+        type: Sequelize.INTEGER
+      },
+      Debug_description:{
+        type: Sequelize.TEXT
+      },
+
+      Model_rating: {
+        type: Sequelize.INTEGER
+      },
+      Model_description:{
+        type: Sequelize.TEXT
+      },
+
+      Refactor_rating:{
+        type: Sequelize.INTEGER
+      },
+      Refactor_description:{
+        type: Sequelize.TEXT
+      },
+
+      Agile_rating:{
+        type: Sequelize.INTEGER
+      },
+      Agile_description:{
+        type: Sequelize.TEXT
+      },
+
+      Maintainability_rating: {
+        type: Sequelize.INTEGER
+      },
+      Maintainability_description:{
+        type: Sequelize.TEXT
+      },
+
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
