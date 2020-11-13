@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 
-function ReviewList() {
+function ReviewList(props) {
   useEffect(() => {
     fetchReviews();
   }, []);
@@ -14,7 +14,7 @@ function ReviewList() {
 
   return (
     <div>
-      <h1> </h1>
+      <h1> yooo!</h1>
     </div>
   );
 
