@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import '../profile.css';
-import Login from "./components/login.component";
+import Login from "../components/login.component";
 
 export default class Profile extends Component {
 
@@ -26,7 +26,7 @@ export default class Profile extends Component {
         <h1>  hello world</h1>
 
         <div class="grid-container">
-          <div class="grid-item"> <Login /> </div>
+          <div class="grid-item"> line chart </div>
           <div class="grid-item">Reviews list</div>
           <div class="grid-item">Radar chart</div>
           <div class="grid-item">TBC</div>
