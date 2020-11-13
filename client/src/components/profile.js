@@ -23,6 +23,14 @@ export default class Profile extends Component {
         return (
           <div className="Profile">
           <h1>  hello world</h1>
+
+            <div class="grid-container">
+              <div class="grid-item">Line chart</div>
+              <div class="grid-item">Reviews list</div>
+              <div class="grid-item">Radar chart</div>
+              <div class="grid-item">TBC</div>
+            </div>
+
           </div>
         );
     };
