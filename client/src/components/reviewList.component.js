@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 
-function ReviewList(props) {
+function ReviewList() {
   useEffect(() => {
     fetchReviews();
   }, []);
 
-  const fetchReviews = async () => {
-    const data = await fetch('https://fortnite-api.theapinetwork.com/upcoming/get');
-    console.log(data);
+  const fetchReviews = async (res) => {
+    const data = await fetch('http://localhost:9000/reviews/all');
+    const reviews = await data.json();
+    console.log(reviews)
   };
 
 
