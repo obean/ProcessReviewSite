@@ -30,10 +30,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
 
-      Debut_rating:{
+      Debug_rating:{
         type: Sequelize.INTEGER
       },
-      Debut_description:{
+      Debug_description:{
         type: Sequelize.TEXT
       },
 
