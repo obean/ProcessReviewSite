@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       booking_date: {
-        type: Sequelize.DATE
+        type: Sequelize.TEXT
       },
       general_feedback: {
         type: Sequelize.TEXT

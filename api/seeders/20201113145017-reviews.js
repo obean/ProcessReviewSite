@@ -2,18 +2,107 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
-  },
-
-  down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Users', null, {});
+    return queryInterface.bulkInsert('Reviews', [{
+      booking_date: '30/10/2020',
+      general_feedback: "Well done on the improvements you have made to your development process. Your requirements gathering was thorough, your justification was good and your test-driven development process was steady. Two notes of improvement would be to continue attempting code challenges to give you familiarity with Ruby's standard library and to also ensure that your commit messages improve as we discussed and as mentioned under the section on changeability. I encourage you to book another review to put your new and improved process under the test of a different exercise. Good luck till next time!",
+      TDD_rating: 64,
+      TDD_description: "You focused on testing the behaviour of the system sticking to the client’s requirements. This allowed you to make headway in meeting the user’s needs quickly. You followed a steady red-green-refactor cycle ensuring that you introduced simpler behaviours at first with increments towards more complex ones. This was indicated in the examples you chose initially just “1” and then “1 + 0” followed by “1 + 1”, etc. This allowed you to control the complexity of your code and thus the scope of bugs in each iteration.",
+      Fluency_rating: 32,
+      Fluency_description: "You were very familiar with the usage of Ruby and able to make use of documentation to assist you with identifying the built-in methods you intended to use; this was the case with the ‘count’ method. You were able to ultimately develop an implementation of your algorithm that flowed logically despite taking some time. I encourage you to spend more time working on code challenges such as CodeWars to allow you to gain more experience with Ruby",
+      Debut_rating: 40,
+      Debut_description: "You were able to interpret the backtrace messages and relate them to your code. You made use of IRB to get immediate feedback on your code’s behaviour. This was good. This allowed you to reduce the search space for bugs in your code and ultimately resolve the problematic lines to have a working solution.",
+      Model_rating: 53,
+      Model_description: "You defined your interface as a class named ‘String_calculator’ with a method named ‘calculate’. The class should have been in PascalCasing to adhere to Ruby’s naming conventions. Your names were noun-like and verb-like respectively adhering to object-oriented naming conventions.",
+      Refactor_rating: 82,
+      Refactor_description: "After the green phases, you changed your test descriptions and assertions to match the acceptance criteria more accurately. This allowed you to not only have correct tests but to also have maintainable ones too.",
+      Agile_rating: 23,
+      Agile_description: "You constructed an input-output table to capture the main requirements and edge cases such as the division by zero. You also asked the client for examples to get an idea for how they expected the system to work in addition to providing your own. This allowed the client to check in and give you feedback where necessary. You started your development process with a comprehensive understanding of the requirements as a result." ,
+      Maintainability_rating: 54,
+      Maintainability_description: "You committed after your green phases providing a reliable reference for change. However, your commits could have been more informative by pointing directly to the case of the acceptance criteria being handled by the change rather than the concerned test.\pYou only tested at the system boundaries keeping your tests and implementation decoupled from each other. This allowed you to refactor either your solution without needing to concurrently change the implementation or the tests.\pYou used verbose names that made it clear what they represented allowing the meaning of your program to be clear to humans beyond the machine-interpretable level." ,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      booking_date: '06/11/2020',
+      general_feedback: "Well done on the improvements you have made to your development process. Your requirements gathering was thorough, your justification was good and your test-driven development process was steady. Two notes of improvement would be to continue attempting code challenges to give you familiarity with Ruby's standard library and to also ensure that your commit messages improve as we discussed and as mentioned under the section on changeability. I encourage you to book another review to put your new and improved process under the test of a different exercise. Good luck till next time!",
+      TDD_rating: 50,
+      TDD_description: "You focused on testing the behaviour of the system sticking to the client’s requirements. This allowed you to make headway in meeting the user’s needs quickly. You followed a steady red-green-refactor cycle ensuring that you introduced simpler behaviours at first with increments towards more complex ones. This was indicated in the examples you chose initially just “1” and then “1 + 0” followed by “1 + 1”, etc. This allowed you to control the complexity of your code and thus the scope of bugs in each iteration.",
+      Fluency_rating: 20,
+      Fluency_description: "You were very familiar with the usage of Ruby and able to make use of documentation to assist you with identifying the built-in methods you intended to use; this was the case with the ‘count’ method. You were able to ultimately develop an implementation of your algorithm that flowed logically despite taking some time. I encourage you to spend more time working on code challenges such as CodeWars to allow you to gain more experience with Ruby",
+      Debut_rating: 56,
+      Debut_description: "You were able to interpret the backtrace messages and relate them to your code. You made use of IRB to get immediate feedback on your code’s behaviour. This was good. This allowed you to reduce the search space for bugs in your code and ultimately resolve the problematic lines to have a working solution.",
+      Model_rating: 70,
+      Model_description: "You defined your interface as a class named ‘String_calculator’ with a method named ‘calculate’. The class should have been in PascalCasing to adhere to Ruby’s naming conventions. Your names were noun-like and verb-like respectively adhering to object-oriented naming conventions.",
+      Refactor_rating: 70,
+      Refactor_description: "After the green phases, you changed your test descriptions and assertions to match the acceptance criteria more accurately. This allowed you to not only have correct tests but to also have maintainable ones too.",
+      Agile_rating: 40,
+      Agile_description: "You constructed an input-output table to capture the main requirements and edge cases such as the division by zero. You also asked the client for examples to get an idea for how they expected the system to work in addition to providing your own. This allowed the client to check in and give you feedback where necessary. You started your development process with a comprehensive understanding of the requirements as a result." ,
+      Maintainability_rating: 60,
+      Maintainability_description: "You committed after your green phases providing a reliable reference for change. However, your commits could have been more informative by pointing directly to the case of the acceptance criteria being handled by the change rather than the concerned test.\pYou only tested at the system boundaries keeping your tests and implementation decoupled from each other. This allowed you to refactor either your solution without needing to concurrently change the implementation or the tests.\pYou used verbose names that made it clear what they represented allowing the meaning of your program to be clear to humans beyond the machine-interpretable level." ,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      booking_date: '08/11/2020',
+      general_feedback: "Well done on the improvements you have made to your development process. Your requirements gathering was thorough, your justification was good and your test-driven development process was steady. Two notes of improvement would be to continue attempting code challenges to give you familiarity with Ruby's standard library and to also ensure that your commit messages improve as we discussed and as mentioned under the section on changeability. I encourage you to book another review to put your new and improved process under the test of a different exercise. Good luck till next time!",
+      TDD_rating: 70,
+      TDD_description: "You focused on testing the behaviour of the system sticking to the client’s requirements. This allowed you to make headway in meeting the user’s needs quickly. You followed a steady red-green-refactor cycle ensuring that you introduced simpler behaviours at first with increments towards more complex ones. This was indicated in the examples you chose initially just “1” and then “1 + 0” followed by “1 + 1”, etc. This allowed you to control the complexity of your code and thus the scope of bugs in each iteration.",
+      Fluency_rating: 45,
+      Fluency_description: "You were very familiar with the usage of Ruby and able to make use of documentation to assist you with identifying the built-in methods you intended to use; this was the case with the ‘count’ method. You were able to ultimately develop an implementation of your algorithm that flowed logically despite taking some time. I encourage you to spend more time working on code challenges such as CodeWars to allow you to gain more experience with Ruby",
+      Debut_rating: 60,
+      Debut_description: "You were able to interpret the backtrace messages and relate them to your code. You made use of IRB to get immediate feedback on your code’s behaviour. This was good. This allowed you to reduce the search space for bugs in your code and ultimately resolve the problematic lines to have a working solution.",
+      Model_rating: 64,
+      Model_description: "You defined your interface as a class named ‘String_calculator’ with a method named ‘calculate’. The class should have been in PascalCasing to adhere to Ruby’s naming conventions. Your names were noun-like and verb-like respectively adhering to object-oriented naming conventions.",
+      Refactor_rating: 65,
+      Refactor_description: "After the green phases, you changed your test descriptions and assertions to match the acceptance criteria more accurately. This allowed you to not only have correct tests but to also have maintainable ones too.",
+      Agile_rating: 64,
+      Agile_description: "You constructed an input-output table to capture the main requirements and edge cases such as the division by zero. You also asked the client for examples to get an idea for how they expected the system to work in addition to providing your own. This allowed the client to check in and give you feedback where necessary. You started your development process with a comprehensive understanding of the requirements as a result." ,
+      Maintainability_rating: 67,
+      Maintainability_description: "You committed after your green phases providing a reliable reference for change. However, your commits could have been more informative by pointing directly to the case of the acceptance criteria being handled by the change rather than the concerned test.\pYou only tested at the system boundaries keeping your tests and implementation decoupled from each other. This allowed you to refactor either your solution without needing to concurrently change the implementation or the tests.\pYou used verbose names that made it clear what they represented allowing the meaning of your program to be clear to humans beyond the machine-interpretable level." ,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      booking_date: '11/11/2020',
+      general_feedback: "Well done on the improvements you have made to your development process. Your requirements gathering was thorough, your justification was good and your test-driven development process was steady. Two notes of improvement would be to continue attempting code challenges to give you familiarity with Ruby's standard library and to also ensure that your commit messages improve as we discussed and as mentioned under the section on changeability. I encourage you to book another review to put your new and improved process under the test of a different exercise. Good luck till next time!",
+      TDD_rating: 67,
+      TDD_description: "You focused on testing the behaviour of the system sticking to the client’s requirements. This allowed you to make headway in meeting the user’s needs quickly. You followed a steady red-green-refactor cycle ensuring that you introduced simpler behaviours at first with increments towards more complex ones. This was indicated in the examples you chose initially just “1” and then “1 + 0” followed by “1 + 1”, etc. This allowed you to control the complexity of your code and thus the scope of bugs in each iteration.",
+      Fluency_rating: 66,
+      Fluency_description: "You were very familiar with the usage of Ruby and able to make use of documentation to assist you with identifying the built-in methods you intended to use; this was the case with the ‘count’ method. You were able to ultimately develop an implementation of your algorithm that flowed logically despite taking some time. I encourage you to spend more time working on code challenges such as CodeWars to allow you to gain more experience with Ruby",
+      Debut_rating: 62,
+      Debut_description: "You were able to interpret the backtrace messages and relate them to your code. You made use of IRB to get immediate feedback on your code’s behaviour. This was good. This allowed you to reduce the search space for bugs in your code and ultimately resolve the problematic lines to have a working solution.",
+      Model_rating: 43,
+      Model_description: "You defined your interface as a class named ‘String_calculator’ with a method named ‘calculate’. The class should have been in PascalCasing to adhere to Ruby’s naming conventions. Your names were noun-like and verb-like respectively adhering to object-oriented naming conventions.",
+      Refactor_rating: 67,
+      Refactor_description: "After the green phases, you changed your test descriptions and assertions to match the acceptance criteria more accurately. This allowed you to not only have correct tests but to also have maintainable ones too.",
+      Agile_rating: 70,
+      Agile_description: "You constructed an input-output table to capture the main requirements and edge cases such as the division by zero. You also asked the client for examples to get an idea for how they expected the system to work in addition to providing your own. This allowed the client to check in and give you feedback where necessary. You started your development process with a comprehensive understanding of the requirements as a result." ,
+      Maintainability_rating: 78,
+      Maintainability_description: "You committed after your green phases providing a reliable reference for change. However, your commits could have been more informative by pointing directly to the case of the acceptance criteria being handled by the change rather than the concerned test.\pYou only tested at the system boundaries keeping your tests and implementation decoupled from each other. This allowed you to refactor either your solution without needing to concurrently change the implementation or the tests.\pYou used verbose names that made it clear what they represented allowing the meaning of your program to be clear to humans beyond the machine-interpretable level." ,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      booking_date: '11/11/2020',
+      general_feedback: "Well done on the improvements you have made to your development process. Your requirements gathering was thorough, your justification was good and your test-driven development process was steady. Two notes of improvement would be to continue attempting code challenges to give you familiarity with Ruby's standard library and to also ensure that your commit messages improve as we discussed and as mentioned under the section on changeability. I encourage you to book another review to put your new and improved process under the test of a different exercise. Good luck till next time!",
+      TDD_rating: 80,
+      TDD_description: "You focused on testing the behaviour of the system sticking to the client’s requirements. This allowed you to make headway in meeting the user’s needs quickly. You followed a steady red-green-refactor cycle ensuring that you introduced simpler behaviours at first with increments towards more complex ones. This was indicated in the examples you chose initially just “1” and then “1 + 0” followed by “1 + 1”, etc. This allowed you to control the complexity of your code and thus the scope of bugs in each iteration.",
+      Fluency_rating: 70,
+      Fluency_description: "You were very familiar with the usage of Ruby and able to make use of documentation to assist you with identifying the built-in methods you intended to use; this was the case with the ‘count’ method. You were able to ultimately develop an implementation of your algorithm that flowed logically despite taking some time. I encourage you to spend more time working on code challenges such as CodeWars to allow you to gain more experience with Ruby",
+      Debut_rating: 64,
+      Debut_description: "You were able to interpret the backtrace messages and relate them to your code. You made use of IRB to get immediate feedback on your code’s behaviour. This was good. This allowed you to reduce the search space for bugs in your code and ultimately resolve the problematic lines to have a working solution.",
+      Model_rating: 53,
+      Model_description: "You defined your interface as a class named ‘String_calculator’ with a method named ‘calculate’. The class should have been in PascalCasing to adhere to Ruby’s naming conventions. Your names were noun-like and verb-like respectively adhering to object-oriented naming conventions.",
+      Refactor_rating: 68,
+      Refactor_description: "After the green phases, you changed your test descriptions and assertions to match the acceptance criteria more accurately. This allowed you to not only have correct tests but to also have maintainable ones too.",
+      Agile_rating: 91,
+      Agile_description: "You constructed an input-output table to capture the main requirements and edge cases such as the division by zero. You also asked the client for examples to get an idea for how they expected the system to work in addition to providing your own. This allowed the client to check in and give you feedback where necessary. You started your development process with a comprehensive understanding of the requirements as a result." ,
+      Maintainability_rating: 98,
+      Maintainability_description: "You committed after your green phases providing a reliable reference for change. However, your commits could have been more informative by pointing directly to the case of the acceptance criteria being handled by the change rather than the concerned test.\pYou only tested at the system boundaries keeping your tests and implementation decoupled from each other. This allowed you to refactor either your solution without needing to concurrently change the implementation or the tests.\pYou used verbose names that made it clear what they represented allowing the meaning of your program to be clear to humans beyond the machine-interpretable level." ,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    }], {});
+  }, down: async (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Reviews', null, {});
   }
 };
