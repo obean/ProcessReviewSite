@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt')
 module.exports = ( passport) => {
   //serialize use
   passport.serializeUser(function(user, cb) {
-    cb(null, {username: user.username});
+    cb(null, user.id);
   });
 
   //deserialize
@@ -53,10 +53,17 @@ module.exports = ( passport) => {
       }
   );
 
-  router.get('/logged-in', loggedIn, async function(id) {
+
+
+
+
+  router.get('/logged-in', loggedIn, async function(req, res, id) {
+    
     const user = await models.user.findOne({where: {id: id}})
+    console.log(user)
     res.status(200).send(JSON.stringify(user))
   })
+
 
   // function loggedIn(req, res, next) {
   //   if( req.isAuthenticated()) {
@@ -67,20 +74,18 @@ module.exports = ( passport) => {
   //     console.log("not authenticated")
   //   }
   // }
-  router.get('/logged-in', loggedIn, function(id) {
 
-
-  })
 
   function loggedIn(req, res, next) {
     var potato = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
     if(potato){
-    var regexato = req.sessionStore.sessions[potato].match(/{"user":\d+}/)[0]
+    var regexato = req.sessionStore.sessions[potato].match(/\d+/)[0]
     console.log("and the user ID is " + regexato)
-    return next(regexato)
+    
+    res.status(200).send(JSON.stringify(regexato))
     // res.status(200).send(JSON.stringify(regexato))
     } else {
-      res.status(401).send()
+      res.status(401).send(JSON.stringify("unauthorised"))
       }
    
 
