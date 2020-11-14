@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var  models  = require('../models');
-var bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt')
 
 
 
@@ -29,9 +29,10 @@ router.get('/', async function(req, res, next) {
 //   res.send(JSON.stringify(user));  ;
 // });
   router.post('/new', async function(req, res, next) {
-
+    await console.log(req.body.password)
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
+  console.log(salt)
   const hash = bcrypt.hashSync(req.body.password, salt)
   const user = await models.User.create({ firstName: req.body.firstName, username: req.body.username, lastName: req.body.lastName, password: hash, email: req.body.email });
   
