@@ -25,7 +25,7 @@ router.post('/new', async function(req, res, next) {
   // console.log(req.body + 'req')
  
   const user = await models.User.create({ firstName: req.body.firstName, lastName: req.body.lastName, password: 'password', email: req.body.email });
-  // res.send(JSON.stringify(user));  ;
+  res.send(JSON.stringify(user));  ;
 });
 
 // router.get('/sign-up', function(req, res, next) {
