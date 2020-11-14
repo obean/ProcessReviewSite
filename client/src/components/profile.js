@@ -2,9 +2,13 @@ import React, { Component, useState, useEffect } from "react";
 import '../profile.css';
 import ReviewList from './reviewList.component'
 import RadarChartRecharts from "./radarChart.component";
+<<<<<<< HEAD
 import LineChart from './lineChart.component'
 import { Redirect } from 'react-router'
 import { useHistory } from "react-router"
+=======
+
+>>>>>>> 6f389b2... playing around with radar graph
 
 function Profile() {
   let history = useHistory()
