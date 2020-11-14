@@ -14,25 +14,25 @@ const RatingsList = () => {
   const fetchRatings = async (res) => {
     const data = await fetch('http://localhost:9000/reviews/ratings');
     const ratings = await data.json();
-    // console.log(ratings)
     setRatings(ratings)
   };
 
   const formatter = () => {
-
     for (let index = 0; index < ratings.length; index++) {
-      ratings[index]['name'] = index + 1
-      
-    }
-    console.log(ratings)
-  }
-  formatter()
-// const data = [
-//   {
-//     name: '1', uv: 4000, pv: 2400, amt: 2400,
-//   },
-// ];
+      ratings[index]['name'] = index + 1;
 
+      for (const [old_key] of Object.entries(ratings[index])) {
+        if (old_key.endsWith("_rating")) {
+          let new_key = old_key.slice(0, -7);
+          ratings[index][new_key] = ratings[index][old_key];
+          delete ratings[index][old_key];
+        }
+      }
+    }
+  }
+  
+  formatter()
+  
   return (
     <LineChart
       width={700}
@@ -47,13 +47,13 @@ const RatingsList = () => {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Line type="monotone" dataKey="TDD_rating" stroke="#8884d8" activeDot={{ r: 8 }} />
-      <Line type="monotone" dataKey="Fluency_rating" stroke="#82ca8d" />
-      <Line type="monotone" dataKey="Debug_rating" stroke="#82ca5d" />
-      <Line type="monotone" dataKey="Model_rating" stroke="#82ca3d" />
-      <Line type="monotone" dataKey="Refactor_rating" stroke="#82ca2d" />
-      <Line type="monotone" dataKey="Agile_rating" stroke="#82ca1d" />
-      <Line type="monotone" dataKey="Maintainability_rating" stroke="#82ca6d" />
+      <Line type="monotone" dataKey="TDD" stroke="#8884d8" activeDot={{ r: 8 }} />
+      <Line type="monotone" dataKey="Fluency" stroke="#82ca8d" />
+      <Line type="monotone" dataKey="Debug" stroke="#82ca5d" />
+      <Line type="monotone" dataKey="Model" stroke="#82ca3d" />
+      <Line type="monotone" dataKey="Refactor" stroke="#82ca2d" />
+      <Line type="monotone" dataKey="Agile" stroke="#82ca1d" />
+      <Line type="monotone" dataKey="Maintainability" stroke="#82ca6d" />
     </LineChart>
   );
 
