@@ -37,10 +37,16 @@ function Profile() {
         <div className="grid-container">
     
           <div className="grid-item"> line chart </div>
+<<<<<<< HEAD
           <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
           <div className="grid-item"> <RadarChartRecharts />  </div>
           <div className="grid-item"> <LineChart /></div>
         
+=======
+          <div className="grid-item"> <ReviewList /> </div>
+          <div className="grid-item"><RadarChartRecharts /> </div>
+          <div className="grid-item">TBC</div>
+>>>>>>> 6f389b2... playing around with radar graph
         </div>
        
       </div>
