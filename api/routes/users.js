@@ -53,21 +53,50 @@ module.exports = ( passport) => {
       }
   );
 
-  router.get('/logged-in', loggedIn, function(req, res) {
-    console.log(isAuthenticated)
-    console.log(req.user)
-    console.log(req.body)
+  router.get('/logged-in', loggedIn, async function(id) {
+    const user = await models.user.findOne({where: {id: id}})
+    res.status(200).send(JSON.stringify(user))
+  })
+
+  // function loggedIn(req, res, next) {
+  //   if( req.isAuthenticated()) {
+        
+  //     console.log("true")
+  //     return next()
+  //   } else {
+  //     console.log("not authenticated")
+  //   }
+  // }
+  router.get('/logged-in', loggedIn, function(id) {
+
+
   })
 
   function loggedIn(req, res, next) {
-    if( req.isAuthenticated()) {
-        
+    var potato = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
+    if(potato){
+    var regexato = req.sessionStore.sessions[potato].match(/{"user":\d+}/)[0]
+    console.log("and the user ID is " + regexato)
+    return next(regexato)
+    // res.status(200).send(JSON.stringify(regexato))
+    } else {
+      res.status(401).send()
+      }
+   
+
+    // console.log('_____' + Object.values(req.sessionStore.sessions))
+    // console.log('_____' + Object.keys(req.sessionStore.sessions)[0])
+    // console.log(req.user)
+    if(req.user) {
+      
       console.log("true")
       return next()
-    } else {
-      console.log("not authenticated")
-    }
-  }
+  } else {
+    //console.log(req)
+   // console.log(req)
+   //res.send(JSON.stringify(req.sessionStore.sessions))
+    console.log("no")
+  }}
 
   return router
 
