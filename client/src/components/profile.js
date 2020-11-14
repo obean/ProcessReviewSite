@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import '../profile.css';
 import ReviewList from './reviewList.component'
 import RadarChartRecharts from "./radarChart.component";
-
+import LineChart from './lineChart.component'
 
 function Profile() {
 
@@ -14,7 +14,7 @@ function Profile() {
           <div className="grid-item"> line chart </div>
           <div className="grid-item"> <ReviewList /> </div>
           <div className="grid-item"><RadarChartRecharts /> </div>
-          <div className="grid-item">TBC</div>
+          <div className="grid-item"><LineChart /></div>
         </div>
 
       </div>
