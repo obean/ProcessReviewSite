@@ -5,7 +5,7 @@ var models  = require('../models');
 router.get('/all', async function(req, res, next) {
 
   console.log(req.param('id') + " params!!!!")
-  if(req.params('id')){
+  if(req.param('id')){
   const reviews = await models.Review.findAll(
     {
     where: {userId: req.param('id')}
@@ -60,7 +60,17 @@ router.post('/book', async function(req, res) {
     returning: true,
     plain: true
 })
-res.status(200).send()
+res.status(200).send(JSON.stringify(affectedRows))
+})
+
+router.post('/cancel', async function(req, res) {
+  const [numberOfAffectedRows, affectedRows] = await models.Review.update({
+    userId: null
+  }, {
+    where: {id: req.body.reviewId},
+    returning: true,
+    plain: true
+  })
 })
 
 

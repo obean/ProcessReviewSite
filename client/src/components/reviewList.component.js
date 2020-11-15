@@ -15,6 +15,7 @@ function ReviewList(props) {
 
   return (
     <div>
+      <h3>Your booked Reviews</h3> 
        { props.reviews.map(review => (
       <li key={review.id}>
         <Link to={`reviews/${review.id}`}>
@@ -23,6 +24,7 @@ function ReviewList(props) {
           <button onClick={() => cancelThis(review.id)}>Cancel</button>
          </li>
        ))}
+       <Link to={'/book-review'}> Book a review</Link>
     </div>
   );
 
