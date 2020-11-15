@@ -8,6 +8,8 @@ import SignUp from "./components/sign-up.component";
 import Profile from "./components/profile";
 
 function App() {
+
+
   return (<Router>
     <div className="App">
       <Navbar />

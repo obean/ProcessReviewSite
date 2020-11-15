@@ -19,7 +19,7 @@ export default class Navbar extends Component {
             </ul>
           </div>
         </div>
-</nav>
+      </nav>
     );
   }
 } 
