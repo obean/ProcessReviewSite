@@ -6,6 +6,7 @@ import Navbar from "./components/navbar.component";
 import Login from "./components/login.component";
 import SignUp from "./components/sign-up.component";
 import Profile from "./components/profile";
+import BookReview from "./components/bookReview.component";
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/sign-in" component={Login} />
             <Route path="/sign-up" component={SignUp} />
             <Route path="/profile" component={Profile} />
+            <Route path="/book-review" component={BookReview} />
         </Switch>
 
     </div>

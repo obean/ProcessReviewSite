@@ -30,7 +30,7 @@ router.get('/ratings', async function(req, res, next) {
 
 router.get('/book', async function(req, res, next){
   const availableReviews = await models.Review.findAll({
-    attributes: ['id', 'reviewerId', 'booking_date'],
+    attributes: ['id', 'reviewerId', 'booking_date'],//, 'booking_time'],
     where: {userId: null}
   }
   )
