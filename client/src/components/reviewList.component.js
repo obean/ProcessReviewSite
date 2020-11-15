@@ -12,7 +12,6 @@ function ReviewList(props) {
           </Link>
          </li>
        ))}
-       {props.id}
     </div>
   );
 

@@ -27,9 +27,8 @@ function Profile() {
         <div className="grid-container">
     
           <div className="grid-item"> line chart </div>
-          <div className="grid-item"> <ReviewList reviewsDates={reviews.booking_date} /> </div>
-          <div className="grid-item"> Radar Chart </div>
-          {/* <RadarChartRecharts /> */}
+          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
+          <div className="grid-item"> <RadarChartRecharts />  </div>
           <div className="grid-item"> <LineChart /></div>
         
         </div>

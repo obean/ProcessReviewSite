@@ -9,12 +9,6 @@ import Profile from "./components/profile";
 
 function App() {
 
-  const [auth, setAuth] = useState()
-
-  const isAuthenticated = () => {
-    setAuth(auth = false)
-  }
-
 
   return (<Router>
     <div className="App">
@@ -23,7 +17,7 @@ function App() {
         <Switch>
             <Route exact path='/' component={Login} />
             <Route path="/sign-in" component={Login} />
-            <Route path="/sign-up" component={SignUp isAuthenticated={isAuthenticated}} />
+            <Route path="/sign-up" component={SignUp} />
             <Route path="/profile" component={Profile} />
         </Switch>
 
