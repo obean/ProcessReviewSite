@@ -28,5 +28,14 @@ router.get('/ratings', async function(req, res, next) {
   res.send(JSON.stringify(ratings));
 });
 
+router.get('/book', async function(req, res, next){
+  const availableReviews = await models.Review.findAll({
+    attributes: ['id', 'reviewerId', 'booking_date'],
+    where: {userId: null}
+  }
+  )
+  res.send(JSON.stringify(availableReviews))
+})
+
 
 module.exports = router;
