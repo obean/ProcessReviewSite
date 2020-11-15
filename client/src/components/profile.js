@@ -6,17 +6,34 @@ import LineChart from './lineChart.component'
 
 function Profile() {
 
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const [reviews, setReviews] = useState([]);
+
+  const fetchReviews = async (res) => {
+    const data = await fetch('http://localhost:9000/reviews/all');
+    const reviews = await data.json();
+    console.log(reviews)
+    setReviews(reviews)
+  };
+
+
     return (
       <div className="Profile">
         <h1>  hello world</h1>
 
         <div className="grid-container">
+    
           <div className="grid-item"> line chart </div>
-          <div className="grid-item"> <ReviewList /> </div>
-          <div className="grid-item"><RadarChartRecharts /> </div>
-          <div className="grid-item"><LineChart /></div>
+          <div className="grid-item"> <ReviewList reviewsDates={reviews.booking_date} /> </div>
+          <div className="grid-item"> Radar Chart </div>
+          {/* <RadarChartRecharts /> */}
+          <div className="grid-item"> <LineChart /></div>
+        
         </div>
-
+       
       </div>
     );
 };
