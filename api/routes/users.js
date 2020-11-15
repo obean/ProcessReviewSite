@@ -25,7 +25,7 @@ module.exports = ( passport) => {
       // console.log(username, password)
         try {
              const user = await models.User.findOne({
-              where: { username: username}
+             where: { username: username}
             })
             if(!user) {
               console.log("not found!")
@@ -45,11 +45,9 @@ module.exports = ( passport) => {
 
   //verify login via local strategy
   router.post('/login',
-    passport.authenticate('local' ),//{ failureRedirect: '/login' }
+    passport.authenticate('local' ),
       function(req, res) {
-        // console.log(res)
         res.send(JSON.stringify(200));
-        //console.log(typeof req)
       }
   );
 
@@ -58,13 +56,12 @@ module.exports = ( passport) => {
 
 
   router.get('/logged-in', loggedIn, async function(req, res, id) {
-    
     const user = await models.user.findOne({where: {id: id}})
     console.log(user)
     res.status(200).send(JSON.stringify(user))
   })
 
-
+//this is the function if the passport stuff worked
   // function loggedIn(req, res, next) {
   //   if( req.isAuthenticated()) {
         
@@ -80,32 +77,12 @@ module.exports = ( passport) => {
     var sessionRequest = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
     if(sessionRequest){
       var user = JSON.parse(req.sessionStore.sessions[sessionRequest]).passport.user
-
-      //console.log("_____---___ " + req.sessionStore.sessions[potato].split("passport:")[1].split("}}").join("}"))
-   //var regexato = req.sessionStore.sessions[potato].match(/\d+/)[0]
-    //console.log("and the user ID is " + regexato)
-    
-
-    res.status(200).send(JSON.stringify({id: user.id, username: user.username}))
-    // res.status(200).send(JSON.stringify(regexato))
+      res.status(200).send(JSON.stringify({id: user.id, username: user.username}))
     } else {
-      res.status(401).send(JSON.stringify("unauthorised"))
+        res.status(401).send(JSON.stringify("unauthorised"))
       }
    
-
-    // console.log('_____' + Object.values(req.sessionStore.sessions))
-    // console.log('_____' + Object.keys(req.sessionStore.sessions)[0])
-    // console.log(req.user)
-    if(req.user) {
-      
-      console.log("true")
-      return next()
-  } else {
-    //console.log(req)
-   // console.log(req)
-   //res.send(JSON.stringify(req.sessionStore.sessions))
-    console.log("no")
-  }}
+}
 
   return router
 
@@ -118,22 +95,11 @@ module.exports = ( passport) => {
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
-  
   const users = await models.User.findAll();
-  
   res.send(JSON.stringify(users));
 });
 
-// router.post('/sign-up', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
 
-// router.post('/new', async function(req, res, next) {
-//   // console.log(req.body + 'req')
- 
-//   const user = await models.User.create({ firstName: req.body.firstName, lastName: req.body.lastName, password: 'password', email: req.body.email });
-//   res.send(JSON.stringify(user));  ;
-// });
   router.post('/new', async function(req, res, next) {
     await console.log(req.body.password)
   const saltRounds = 10;
@@ -144,7 +110,4 @@ router.get('/', async function(req, res, next) {
   
 });
 
-// router.get('/sign-up', function(req, res, next) {
-//   res.send('respond with a resource');
-// });
-//module.exports = router;
+
