@@ -3,10 +3,16 @@ var router = express.Router();
 var models  = require('../models');
 
 router.get('/all', async function(req, res, next) {
+
+  console.log(req.param('id') + " params!!!!")
+  if(req.param('id')){
+  const reviews = await models.Review.findAll(
+    {
+    where: {userId: req.param('id')}
+  }
+  );
   
-  const reviews = await models.Review.findAll();
-  
-  res.send(JSON.stringify(reviews));
+  res.send(JSON.stringify(reviews));}
 });
 
 router.get('/ratings', async function(req, res, next) {

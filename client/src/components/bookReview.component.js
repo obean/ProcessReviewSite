@@ -2,14 +2,14 @@ import React, { Component, useState, useEffect } from "react";
 
 
 function BookReview() {
-
+  useEffect(() => {
+    fetchUser();
+  }, [])
   useEffect(() => {
     fetchBookings();
   }, []);
 
-  useEffect(() => {
-    fetchUser();
-  }, [])
+
 
   const [avReviews, setAvReviews] = useState([])
   const [user, setUser] = useState([])
