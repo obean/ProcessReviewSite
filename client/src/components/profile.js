@@ -21,6 +21,13 @@ function Profile() {
   const [user, setUser] = useState([])
   const [redirect, setRedirect] = useState(true)
 
+  // const fetchUser = async (res) => {
+  //   const data = await fetch('http://localhost:9000/users/logged-in');
+  //   const user = await data.json();
+  //   console.log(user)
+  //   setUser(user)
+  // }
+
   const fetchReviews = async (res) => {
     const data = await fetch('http://localhost:9000/reviews/all?id=10');
     const reviews = await data.json();

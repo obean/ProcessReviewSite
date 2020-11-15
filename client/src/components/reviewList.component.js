@@ -3,6 +3,16 @@ import {Link} from 'react-router-dom'
 
 function ReviewList(props) {
 
+  const cancelThis = (id) => {
+    fetch('http://localhost:9000/reviews/cancel', {
+      method: "POST",
+      headers: {
+        'Content-Type' : 'application/json'
+      }, 
+        body: JSON.stringify({reviewId : id})
+    })
+  }
+
   return (
     <div>
        { props.reviews.map(review => (
@@ -10,6 +20,7 @@ function ReviewList(props) {
         <Link to={`reviews/${review.id}`}>
           {review.booking_date}
           </Link>
+          <button onClick={() => cancelThis(review.id)}>Cancel</button>
          </li>
        ))}
     </div>
