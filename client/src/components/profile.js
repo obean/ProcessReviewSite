@@ -22,7 +22,7 @@ function Profile() {
   const [redirect, setRedirect] = useState(true)
 
   const fetchReviews = async (res) => {
-    const data = await fetch('http://localhost:9000/reviews/all');
+    const data = await fetch('http://localhost:9000/reviews/all?id=10');
     const reviews = await data.json();
     console.log(reviews)
     setReviews(reviews)
