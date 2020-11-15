@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router";
+import { Redirect } from 'react-router'
 
 export default class Login extends Component {
+   
     constructor(props){
         super(props)
         this.state = {
@@ -21,12 +24,19 @@ export default class Login extends Component {
             headers: {
             'Content-Type' : 'application/json'
         },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.state),
+            
         })
-        .then((result) => result.json())
-        .then((info) => {console.log(info)})
+        .then(result => {
+            if(result.ok){
+                console.log("poop")
+            return   <Redirect to={'http://localhost3000/profile'}  />
+            }
+        })
+        // .then((result) => result.json())
+        // .then((info) => {console.log(info)})
+        
     }
-
 
     render() {
         return (
