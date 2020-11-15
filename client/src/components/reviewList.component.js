@@ -7,7 +7,7 @@ function ReviewList(props) {
     <div>
        { props.reviews.map(review => (
       <li key={review.id}>
-        <Link to={'reviews/'}>
+        <Link to={`reviews/${review.id}`}>
           {review.booking_date}
           </Link>
          </li>
