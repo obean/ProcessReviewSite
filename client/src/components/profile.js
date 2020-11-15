@@ -18,7 +18,7 @@ function Profile() {
   
     return (
       <div className="Profile">
-        <h1>  hello world</h1>
+        <h1>  hello {user.id}</h1>
 
         <div className="grid-container">
           <div className="grid-item"> line chart </div>

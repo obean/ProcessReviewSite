@@ -8,12 +8,12 @@ const bcrypt = require('bcrypt')
 module.exports = ( passport) => {
   //serialize use
   passport.serializeUser(function(user, cb) {
-    cb(null, user.id);
+    cb(null, user);
   });
 
   //deserialize
-  passport.deserializeUser(function(id, cb) {
-    models.User.findById(id, function (err, user) {
+  passport.deserializeUser(function(user, cb) {
+    models.User.findById(user.id, function (err, user) {
       if (err) { return cb(err); }
       cb(null, user);
     });
@@ -77,12 +77,16 @@ module.exports = ( passport) => {
 
 
   function loggedIn(req, res, next) {
-    var potato = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
-    if(potato){
-    var regexato = req.sessionStore.sessions[potato].match(/\d+/)[0]
-    console.log("and the user ID is " + regexato)
+    var sessionRequest = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
+    if(sessionRequest){
+      var user = JSON.parse(req.sessionStore.sessions[sessionRequest]).passport.user
+
+      //console.log("_____---___ " + req.sessionStore.sessions[potato].split("passport:")[1].split("}}").join("}"))
+   //var regexato = req.sessionStore.sessions[potato].match(/\d+/)[0]
+    //console.log("and the user ID is " + regexato)
     
-    res.status(200).send(JSON.stringify(regexato))
+
+    res.status(200).send({user: {id: user.id, username: user.username}})
     // res.status(200).send(JSON.stringify(regexato))
     } else {
       res.status(401).send(JSON.stringify("unauthorised"))
