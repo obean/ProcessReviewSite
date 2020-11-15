@@ -5,7 +5,7 @@ var models  = require('../models');
 router.get('/all', async function(req, res, next) {
 
   console.log(req.param('id') + " params!!!!")
-  if(req.param('id')){
+  if(req.params('id')){
   const reviews = await models.Review.findAll(
     {
     where: {userId: req.param('id')}
