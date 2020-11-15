@@ -1,9 +1,23 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+
+//add passport cookies/flash
+var flash = require('connect-flash');
 var cookieParser = require('cookie-parser');
+var session = require('express-session')
+//
 var logger = require('morgan');
 var cors = require('cors');
+const bodyParser = require('body-parser');
+
+//add routes files
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var reviewsRouter = require('./routes/reviews');
+
+var cors = require('cors')// DUPLICATE LINE <<<<<DELETE
+
 
 var app = express();
 
@@ -14,16 +28,31 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cors())
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true })); ///changed from false 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//add flash for auth
+app.use(flash());
+//enable cors
+app.use(cors()); // DUPLICATE LINE <<<<<DELETE
+
+// Adding seesion/cookies
+app.use(session({ cookie: { name: "cookie" }, 
+  secret: 'woot',
+  resave: false, 
+  saveUninitialized: false})
+);
+// require passport/sessions
+var passport = require('passport')
+app.use(passport.initialize())
+app.use(passport.session())
+
+
+
 // Routes setup
-var indexRouter = require('./routes/index');
 app.use('/', indexRouter);
-var usersRouter = require('./routes/users');
-app.use('/users', usersRouter);
-var reviewsRouter = require('./routes/reviews');
+app.use('/users', usersRouter(passport));
 app.use('/reviews', reviewsRouter);
 //
 

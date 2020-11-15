@@ -5,12 +5,16 @@ import RadarChartRecharts from "./radarChart.component";
 import LineChart from './lineChart.component'
 
 function Profile() {
+  useEffect(() => {
+    fetchUser();
+  }, [])
 
   useEffect(() => {
     fetchReviews();
   }, []);
 
   const [reviews, setReviews] = useState([]);
+  const [user, setUser] = useState([])
 
   const fetchReviews = async (res) => {
     const data = await fetch('http://localhost:9000/reviews/all');
@@ -19,10 +23,16 @@ function Profile() {
     setReviews(reviews)
   };
 
+  const fetchUser = async (res) => {
+    const data = await fetch('http://localhost:9000/users/logged-in');
+    const user = await data.json();
+    console.log(user)
+    setUser(user)
+  }
 
     return (
       <div className="Profile">
-        <h1>  hello world</h1>
+        <h1>  hello {user.username}</h1>
 
         <div className="grid-container">
     
