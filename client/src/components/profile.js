@@ -12,7 +12,7 @@ function Profile() {
         <div className="grid-container">
           <div className="grid-item"> line chart </div>
           <div className="grid-item"> <ReviewList /> </div>
-          <div className="grid-item">Radar chart</div>
+          <div className="grid-item"><LineChart /></div>
           <div className="grid-item"><LineChart /></div>
         </div>
 
