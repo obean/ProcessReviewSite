@@ -37,5 +37,25 @@ router.get('/book', async function(req, res, next){
   res.send(JSON.stringify(availableReviews))
 })
 
+router.post('/book', async function(req, res) {
+  console.log(req.body.booking.user)
+  console.log(req.body.booking.review)
+  // await models.Review.findByPk(req.body.booking.review)
+  // .then((review) => review.update({
+  //   userId: req.body.user
+  //   }, {
+  //     where: {}
+  //   }
+  // ))
+  const [numberOfAffectedRows, affectedRows] = await models.Review.update({
+   userId: req.body.booking.user
+  },
+    {where: {id: req.body.booking.review},
+    returning: true,
+    plain: true
+})
+res.status(200).send()
+})
+
 
 module.exports = router;
