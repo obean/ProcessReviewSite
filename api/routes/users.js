@@ -86,7 +86,7 @@ module.exports = ( passport) => {
     //console.log("and the user ID is " + regexato)
     
 
-    res.status(200).send({user: {id: user.id, username: user.username}})
+    res.status(200).send(JSON.stringify({id: user.id, username: user.username}))
     // res.status(200).send(JSON.stringify(regexato))
     } else {
       res.status(401).send(JSON.stringify("unauthorised"))
