@@ -17,7 +17,7 @@ function Profile() {
   }, []);
 
 
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState({});
   const [user, setUser] = useState([])
   const [redirect, setRedirect] = useState(true)
 
@@ -31,29 +31,29 @@ function Profile() {
   const fetchUser = async (res) => {
     const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log("poop"));
     const user = await data.json();
-    if(await user == "unauthorised") {
+    if (await user === "unauthorised") {
       history.push("/sign-up")
-    
+
     }
     console.log(user)
     setUser(user)
   }
-  
-    return (
-      <div className="Profile">
-        <h1>  hello {user.username}</h1>
 
-        <div className="grid-container">
-    
-          <div className="grid-item"> line chart </div>
-          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
-          <div className="grid-item"> <RadarChartRecharts />  </div>
-          <div className="grid-item"> <LineChart /></div>
-        
-        </div>
-       
+  return (
+    <div className="Profile">
+      <h1>  hello {user.username}</h1>
+
+      <div className="grid-container">
+
+        <div className="grid-item"> line chart </div>
+        <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
+        <div className="grid-item"> <RadarChartRecharts />  </div>
+        <div className="grid-item"> <LineChart /></div>
+
       </div>
-    );
+
+    </div>
+  );
 };
 
 export default Profile;
