@@ -32,7 +32,7 @@ function Profile() {
   }catch(e) {console.log(e)}
   }
   
-    return (
+    if(!user.isAdmin){return (
       <div className="Profile">
         <h1>  hello {user.username}</h1>
 
@@ -46,7 +46,7 @@ function Profile() {
         </div>
        
       </div>
-    );
+    );}
 };
 
 export default Profile;
