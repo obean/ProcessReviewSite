@@ -11,9 +11,10 @@ function Profile() {
   useEffect(() => {
     fetchUser();
   }, [])
-
+ 
   const [reviews, setReviews] = useState([]);
   const [user, setUser] = useState([])
+  const [data, setRatings] = useState([]);
 
   const fetchUser = async (res) => {
     try {
@@ -27,9 +28,27 @@ function Profile() {
       const reviews = await revData.json();
       console.log(reviews)
       setReviews(reviews)
+      formatter()
     }
-    
-  }catch(e) {console.log(e)}
+  } catch(e) {console.log(e)}
+  };
+ 
+  const formatter = () => {
+    let index = 0
+    const data = reviews.map(review => {
+      for (const [old_key] of Object.entries(review)) {
+        if (old_key.endsWith("_rating")) {
+          let new_key = old_key.slice(0, -7);
+          review[new_key] = review[old_key];
+          delete review[old_key];
+        } else {
+          delete review[old_key]
+        }
+      }
+    review['name'] = index + 1
+    index++;
+    });
+      setRatings(data);
   }
   
     return (
@@ -41,7 +60,7 @@ function Profile() {
           <div className="grid-item"> line chart </div>
           <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
           <div className="grid-item"> <RadarChartRecharts />  </div>
-          <div className="grid-item"> <LineChart reviews={reviews} /></div>
+          <div className="grid-item"> <LineChart reviews={data} /></div>
         
         </div>
        

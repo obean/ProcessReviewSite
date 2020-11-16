@@ -6,29 +6,15 @@ import {
 
 const RatingsList = (props) => {
  
-  useEffect(() => {
-    fetchRatings();
-  }, []);
+  // useEffect(() => {
+  //   formatter();
+  // }, []);
 
-  const [data, setRatings] = useState([]);
 
-const fetchRatings = async (res) => {
-   
-    for (let index = 0; index < props.reviews.length; index++) {
-      for (const [old_key] of Object.entries(props.reviews[index])) {
-        if (old_key.endsWith("_rating")) {
-          let new_key = old_key.slice(0, -7);
-          props.reviews[index][new_key] = props.reviews[index][old_key];
-          delete props.reviews[index][old_key];
-        } else {
-          delete props.reviews[index][old_key]
-        }
-      }
-      props.reviews[index]['name'] = index + 1;
-    }
-    const data = props.reviews;
-    setRatings(data);
-  }
+
+ console.log(props)
+
+
  
  
   
@@ -36,7 +22,7 @@ const fetchRatings = async (res) => {
     <LineChart
       width={700}
       height={500}
-      data={data}
+      data={props.reviews}
       margin={{
         top: 5, right: 30, left: 20, bottom: 5,
       }}
