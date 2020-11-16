@@ -22,7 +22,6 @@ router.get('/get-review', async function (req, res) {
 })
 
 
-router.get('/ratings', async function (req, res, next) {
 
 router.get('/get-review', async function (req, res) {
   console.log(req)
