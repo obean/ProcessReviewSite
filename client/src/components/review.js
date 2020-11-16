@@ -38,6 +38,10 @@ function Review() {
         setReview(review)
     }
 
+    const handleChange = (e) => {
+        setReview({[e.target.name]: e.target.value})
+    }
+
     
     if(!user.isAdmin){return (
         <div>
@@ -102,8 +106,10 @@ function Review() {
                 <div id='GeneralFeedback'>
                     <h2> General Feedback </h2>
                     <textarea
-                              rows={5}
-                              cols={200}
+                    name="general_feedback"
+                    onChange={(e) => handleChange(e)}
+                    rows={5}
+                    cols={200}
                     value={review.general_feedback}
                 />  
                 </div>
@@ -113,13 +119,20 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
+                              onChange={(e) => handleChange(e)}
+                              name="TDD_description"
                     value={review.TDD_description}
                     />  
                 </div>
     
                 <div id='Fluency_description'>
                     <h2> Fluency Description {review.Fluency_rating}/100 </h2>
-                    <p> {review.Fluency_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                    value={review.Fluency_description}
+                    />  
                 </div>
     
                 <div id='Debug_description'>
