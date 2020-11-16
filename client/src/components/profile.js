@@ -3,8 +3,11 @@ import '../profile.css';
 import ReviewList from './reviewList.component'
 import RadarChartRecharts from "./radarChart.component";
 import LineChart from './lineChart.component'
+import { Redirect } from 'react-router'
+import { useHistory } from "react-router"
 
 function Profile() {
+  let history = useHistory()
   useEffect(() => {
     fetchUser();
   }, [])
@@ -13,8 +16,10 @@ function Profile() {
     fetchReviews();
   }, []);
 
+
   const [reviews, setReviews] = useState([]);
   const [user, setUser] = useState([])
+  const [redirect, setRedirect] = useState(true)
 
   const fetchReviews = async (res) => {
     const data = await fetch('http://localhost:9000/reviews/all');
@@ -24,12 +29,16 @@ function Profile() {
   };
 
   const fetchUser = async (res) => {
-    const data = await fetch('http://localhost:9000/users/logged-in');
+    const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log("poop"));
     const user = await data.json();
+    if(await user == "unauthorised") {
+      history.push("/sign-up")
+    
+    }
     console.log(user)
     setUser(user)
   }
-
+  
     return (
       <div className="Profile">
         <h1>  hello {user.username}</h1>

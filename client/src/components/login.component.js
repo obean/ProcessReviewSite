@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 
+
 export default class Login extends Component {
+   
     constructor(props){
         super(props)
         this.state = {
@@ -21,12 +23,13 @@ export default class Login extends Component {
             headers: {
             'Content-Type' : 'application/json'
         },
-            body: JSON.stringify(this.state)
+            body: JSON.stringify(this.state),
+            
         })
         .then((result) => result.json())
         .then((info) => {console.log(info)})
+        
     }
-
 
     render() {
         return (
