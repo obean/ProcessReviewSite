@@ -11,7 +11,11 @@ function Review() {
 
     const [review, setReview] = useState({});
 
-    const fetchReview = async () => { };
+    const fetchReview = async () => {
+        const data = await fetch('http://localhost:9000/get-review?id=3');
+        const review = await data.json();
+        console.log(review)
+    }
 
 
     return (
