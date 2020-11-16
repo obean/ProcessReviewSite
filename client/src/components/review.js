@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import '../App.css';
 import ReviewList from './reviewList.component'
-import { Redirect } from 'react-router';
+import { Redirect, useParams } from 'react-router';
 
 
 function Review() {
@@ -10,9 +10,10 @@ function Review() {
     }, []);
 
     const [review, setReview] = useState({});
-
+    const { id } = useParams();
+    console.log(id)
     const fetchReview = async () => {
-        const data = await fetch('http://localhost:9000/reviews/get-review?id=3');
+        const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
         const review = await data.json();
         setReview(review)
     }
@@ -21,6 +22,11 @@ function Review() {
     return (
         <div>
             <h1> Review Page </h1>
+            <div id='BookingDate'>
+                <h2>d</h2>
+                <p> {review.booking_date}</p>
+            </div>
+
             <div id='GeneralFeedback'>
                 <h2> General Feedback </h2>
                 <p> {review.general_feedback} </p>
