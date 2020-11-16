@@ -24,6 +24,15 @@ router.get('/get-review', async function (req, res) {
 
 router.get('/ratings', async function (req, res, next) {
 
+router.get('/get-review', async function (req, res) {
+  console.log(req)
+  const review = await models.Review.findByPk(req.param('id'))
+  res.status(200).send(JSON.stringify(review))
+})
+
+
+router.get('/ratings', async function (req, res, next) {
+
   const ratings = await models.Review.findAll({
     attributes: [
       "TDD_rating",
