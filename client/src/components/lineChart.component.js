@@ -12,13 +12,8 @@ const RatingsList = (props) => {
 
   const [data, setRatings] = useState([]);
 
-  const fetchRatings = async (res) => {
-    const data = formatter();
-    setRatings(data)
-  };
-console.log(data)
-
-  const formatter = () => {
+const fetchRatings = async (res) => {
+   
     for (let index = 0; index < props.reviews.length; index++) {
       for (const [old_key] of Object.entries(props.reviews[index])) {
         if (old_key.endsWith("_rating")) {
@@ -31,8 +26,10 @@ console.log(data)
       }
       props.reviews[index]['name'] = index + 1;
     }
+    const data = props.reviews;
+    setRatings(data);
   }
-  
+ 
  
   
   return (
