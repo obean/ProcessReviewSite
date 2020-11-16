@@ -12,31 +12,24 @@ function Profile() {
     fetchUser();
   }, [])
 
-  useEffect(() => {
-    fetchReviews();
-  }, []);
-
-
   const [reviews, setReviews] = useState([]);
   const [user, setUser] = useState([])
-  const [redirect, setRedirect] = useState(true)
-
-  const fetchReviews = async (res) => {
-    const data = await fetch('http://localhost:9000/reviews/all');
-    const reviews = await data.json();
-    console.log(reviews)
-    setReviews(reviews)
-  };
 
   const fetchUser = async (res) => {
-    const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log("poop"));
+    try {
+    const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
     const user = await data.json();
     if(await user == "unauthorised") {
-      history.push("/sign-up")
-    
+      history.push("/sign-in")
+    }else {
+      setUser(user)
+      const revData = await fetch(`http://localhost:9000/reviews/all?id=${user.id}`);
+      const reviews = await revData.json();
+      console.log(reviews)
+      setReviews(reviews)
     }
-    console.log(user)
-    setUser(user)
+    
+  }catch(e) {console.log(e)}
   }
   
     return (
