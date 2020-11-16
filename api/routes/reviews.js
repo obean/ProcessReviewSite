@@ -27,7 +27,7 @@ router.get('/ratings', async function(req, res, next) {
     "Agile_rating",
     "Maintainability_rating"],
     where: {
-      userId: 11
+      userId: 4
     }
   });
   
