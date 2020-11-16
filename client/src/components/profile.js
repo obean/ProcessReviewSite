@@ -17,36 +17,36 @@ function Profile() {
 
   const fetchUser = async (res) => {
     try {
-    const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
-    const user = await data.json();
-    if(await user == "unauthorised") {
-      history.push("/sign-in")
-    }else {
-      setUser(user)
-      const revData = await fetch(`http://localhost:9000/reviews/all?id=${user.id}`);
-      const reviews = await revData.json();
-      console.log(reviews)
-      setReviews(reviews)
-    }
-    
-  }catch(e) {console.log(e)}
-  }
-  
-    return (
-      <div className="Profile">
-        <h1>  hello {user.username}</h1>
+      const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
+      const user = await data.json();
+      if (await user == "unauthorised") {
+        history.push("/sign-in")
+      } else {
+        setUser(user)
+        const revData = await fetch(`http://localhost:9000/reviews/all?id=${user.id}`);
+        const reviews = await revData.json();
+        console.log(reviews)
+        setReviews(reviews)
+      }
 
-        <div className="grid-container">
-    
-          <div className="grid-item"> line chart </div>
-          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
-          <div className="grid-item"> <RadarChartRecharts />  </div>
-          <div className="grid-item"> <LineChart /></div>
-        
-        </div>
-       
+    } catch (e) { console.log(e) }
+  }
+
+  return (
+    <div className="Profile">
+      <h1>  hello {user.username}</h1>
+
+      <div className="grid-container">
+
+        <div className="grid-item"> line chart </div>
+        <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
+        <div className="grid-item"> <RadarChartRecharts />  </div>
+        <div className="grid-item"> <LineChart /></div>
+
       </div>
-    );
+
+    </div>
+  );
 };
 
 export default Profile;
