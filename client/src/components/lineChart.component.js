@@ -4,25 +4,42 @@ import {
 } from 'recharts';
 
 
-const RatingsList = (props) => {
+const RatingsList = () => {
  
-  // useEffect(() => {
-  //   formatter();
-  // }, []);
+  useEffect(() => {
+    fetchRatings();
+  }, []);
 
 
+  const [ratings, setRatings] = useState([]);
 
- console.log(props)
+  const fetchRatings = async (res) => {
+    const data = await fetch('http://localhost:9000/reviews/ratings');
+    const ratings = await data.json();
+    setRatings(ratings)
+  };
 
+  const formatter = () => {
+    for (let index = 0; index < ratings.length; index++) {
+      ratings[index]['name'] = index + 1;
 
- 
- 
+      for (const [old_key] of Object.entries(ratings[index])) {
+        if (old_key.endsWith("_rating")) {
+          let new_key = old_key.slice(0, -7);
+          ratings[index][new_key] = ratings[index][old_key];
+          delete ratings[index][old_key];
+        }
+      }
+    }
+  }
+
+  formatter()
   
   return (
     <LineChart
       width={700}
       height={500}
-      data={props.reviews}
+      data={ratings}
       margin={{
         top: 5, right: 30, left: 20, bottom: 5,
       }}
