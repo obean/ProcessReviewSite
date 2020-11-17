@@ -18,7 +18,9 @@ router.get('/all', async function (req, res, next) {
 
 
 
-
+router.post('/submit-feedback', async function(req, res) {
+  const [numberOfAffectedRows, affectedRows] = await models.Review.update({
+})
 
 router.get('/get-review', async function (req, res) {
   console.log(req)
