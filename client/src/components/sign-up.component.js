@@ -11,15 +11,19 @@ export default class SignUp extends Component {
             username: '',
             lastName: '',
             email: '',
+            isAdmin: 'false',
         }
     }
     onChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+        console.log(this.state.email)
+        console.log(this.state.isAdmin)
       }
 
-    onSubmit = (e) => {
+    onSubmit = async (e) => {
         e.preventDefault();
-        const {firstName, lastName, email} = this.state;
+        await this.state.isAdmin == "on" ? this.setState({isAdmin: true}) : this.setState({isAdmin: false})
+       // const {firstName, lastName, email,} = this.state;
 
         fetch('http://localhost:9000/users/new', {
         method: "POST",
@@ -28,9 +32,9 @@ export default class SignUp extends Component {
         },
         body: JSON.stringify(this.state)
     })
-    .then((result) => result.json())
+    
     .then((info) => {console.log(info)})
-    // this.props.history.push('/profile');    
+    this.props.history.push('/profile');    
 }
 
     
@@ -65,6 +69,13 @@ export default class SignUp extends Component {
                 <div className="form-group">
                     <label>Password</label>
                     <input type="password" className="form-control" placeholder="Enter password" name="password" />
+                </div>
+
+                <div className="form-group">
+                    <div className="custom-control custom-checkbox">
+                        <input type="checkbox" className="custom-control-input" onClick={console.log(this.state.value)} name="isAdmin" id="customCheck1" />
+                        <label className="custom-control-label" htmlFor="customCheck1">Signup as Reviewer</label>
+                    </div>
                 </div>
 
                 <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
