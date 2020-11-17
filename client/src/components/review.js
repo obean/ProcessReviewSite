@@ -35,7 +35,9 @@ function Review() {
     const fetchReview = async () => {
         const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
         const review = await data.json();
+        
         setReview(review)
+        console.log(review)
     }
 
     const handleChange = (e) => {
@@ -52,7 +54,7 @@ function Review() {
             headers: {
                 "Content-Type" : 'application/json'
             }, 
-            body: JSON.stringify(review)
+            body: JSON.stringify({review, id: id})
         }).then(result => console.log(result))
     }
 
