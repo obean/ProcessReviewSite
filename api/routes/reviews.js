@@ -15,14 +15,10 @@ router.get('/all', async function (req, res, next) {
     res.send(JSON.stringify(reviews));
   }
 });
-router.get('/get-review', async function (req, res) {
-
-  const review = await models.Review.findByPk(req.body.id)
-  res.status(200).send(JSON.stringify(review))
-})
 
 
-router.get('/ratings', async function (req, res, next) {
+
+
 
 router.get('/get-review', async function (req, res) {
   console.log(req)
