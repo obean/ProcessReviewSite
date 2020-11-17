@@ -77,7 +77,7 @@ module.exports = ( passport) => {
     var sessionRequest = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
     if(sessionRequest){
       var user = JSON.parse(req.sessionStore.sessions[sessionRequest]).passport.user
-      res.status(200).send(JSON.stringify({id: user.id, username: user.username}))
+     user.isAdmin ? res.status(200).send(JSON.stringify({id: user.id, username: user.username, isAdmin: user.isAdmin})) : res.status(200).send(JSON.stringify({id: user.id, username: user.username}))
     } else {
         res.status(401).send(JSON.stringify("unauthorised"))
       }
@@ -101,12 +101,12 @@ router.get('/', async function(req, res, next) {
 
 
   router.post('/new', async function(req, res, next) {
-    await console.log(req.body.password)
+    await console.log(req.body)
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
   console.log(salt)
   const hash = bcrypt.hashSync(req.body.password, salt)
-  const user = await models.User.create({ firstName: req.body.firstName, username: req.body.username, lastName: req.body.lastName, password: hash, email: req.body.email });
+  const user = await models.User.create({ firstName: req.body.firstName, username: req.body.username, lastName: req.body.lastName, password: hash, email: req.body.email, isAdmin: req.body.isAdmin });
   
 });
 
