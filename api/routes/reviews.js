@@ -18,8 +18,16 @@ router.get('/all', async function (req, res, next) {
 
 
 
-router.post('/submit-feedback', async function(req, res) {
+router.post('/submit-feedback', async function (req, res) {
+  console.log(req.body)
+  const toUpdate = Object.keys(req.body.review)
+  console.log(toUpdate)
   const [numberOfAffectedRows, affectedRows] = await models.Review.update({
+    TDD_rating: req.body.review.TDD_rating
+
+  }, {
+    where: { id: req.body.id }
+  })
 })
 
 router.get('/get-review', async function (req, res) {
