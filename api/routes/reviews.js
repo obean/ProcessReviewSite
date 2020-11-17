@@ -22,7 +22,6 @@ router.get('/get-review', async function (req, res) {
   res.status(200).send(JSON.stringify(review))
 })
 
-
 router.get('/ratings', async function (req, res, next) {
 
   const ratings = await models.Review.findAll({
