@@ -34,6 +34,7 @@ const RatingsList = () => {
   }
 
   formatter()
+  console.log(ratings)
   
   return (
     <LineChart

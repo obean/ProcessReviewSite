@@ -3,6 +3,8 @@ import '../profile.css';
 import ReviewList from './reviewList.component'
 import RadarChartRecharts from "./radarChart.component";
 import LineChart from './lineChart.component'
+import BarChartRechart from './barChart.component'
+
 import { Redirect } from 'react-router'
 import { useHistory } from "react-router"
 
@@ -38,7 +40,7 @@ function Profile() {
 
         <div className="grid-container">
     
-          <div className="grid-item"> line chart </div>
+          <div className="grid-item"> <BarChartRechart/> </div>
           <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
           <div className="grid-item"> <RadarChartRecharts />  </div>
           <div className="grid-item"> <LineChart /></div>
