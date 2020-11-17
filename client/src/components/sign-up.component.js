@@ -20,9 +20,9 @@ export default class SignUp extends Component {
         console.log(this.state.isAdmin)
       }
 
-    onSubmit = async (e) => {
+    onSubmit = (e) => {
         e.preventDefault();
-        await this.state.isAdmin == "on" ? this.setState({isAdmin: true}) : this.setState({isAdmin: false})
+        this.state.isAdmin == "on" ? this.setState({isAdmin: true}) : this.setState({isAdmin: false})
        // const {firstName, lastName, email,} = this.state;
 
         fetch('http://localhost:9000/users/new', {
@@ -32,9 +32,8 @@ export default class SignUp extends Component {
         },
         body: JSON.stringify(this.state)
     })
-    
     .then((info) => {console.log(info)})
-    this.props.history.push('/profile');    
+    this.props.history.push('/profile');       
 }
 
     
