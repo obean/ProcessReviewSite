@@ -101,7 +101,7 @@ router.get('/', async function(req, res, next) {
 
 
   router.post('/new', async function(req, res, next) {
-    await console.log(req.body)
+ 
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
   console.log(salt)

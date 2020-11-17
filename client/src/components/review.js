@@ -150,7 +150,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, TDD_rating: e.target.value})}
                                 name="TDD_rating"
                                 maxLength="3"
                                 value={review.TDD_rating}
@@ -160,12 +160,36 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, TDD_description: e.target.value})}
                               name="TDD_description"
                     value={review.TDD_description}
                     />  
                 </div>
-    
+
+                <div id='Agile_description'>
+                    <h2> Agile Description>/h2></h2>
+                        <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Agile_rating: e.target.value})}
+                                name="Agile_rating"
+                                maxLength="3"
+                                value={review.Agile_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => setReview({...review, Agile_description: e.target.value})}
+                              name="Agile_description"
+                    value={review.Agile_description}
+                    />  
+                </div>
+
                 <div id='Fluency_description'>
                 <h2> Fluency Description>/h2></h2>
                         <label fontSize="20px">
@@ -174,7 +198,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, Fluency_rating: e.target.value})}
                                 name="Fluency_rating"
                                 maxLength="3"
                                 value={review.Fluency_rating}
@@ -184,7 +208,7 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Fluency_description: e.target.value})}
                               name="Fluency_description"
                     value={review.Fluency_description}
                     />  
@@ -198,7 +222,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, Debug_rating: e.target.value})}
                                 name="Debug_rating"
                                 maxLength="3"
                                 value={review.Debug_rating}
@@ -208,7 +232,7 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Debug_description: e.target.value})}
                               name="Debug_description"
                     value={review.Debug_description}
                     /> 
@@ -222,7 +246,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, Model_rating: e.target.value})}
                                 name="Model_rating"
                                 maxLength="3"
                                 value={review.Model_rating}
@@ -232,7 +256,7 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Model_description: e.target.value})}
                               name="Model_description"
                     value={review.Model_description}
                     /> 
@@ -246,7 +270,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, Refactor_rating: e.target.value})}
                                 name="Refactor_rating"
                                 maxLength="3"
                                 value={review.Refactor_rating}
@@ -256,7 +280,7 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Refactor_description: e.target.value})}
                               name="Refactor_description"
                     value={review.Refactor_description}
                     /> 
@@ -270,7 +294,7 @@ function Review() {
                          <textarea 
                                 rows={1}
                                 cols={3}
-                                onChange={(e) => handleChange(e)}
+                                onChange={(e) => setReview({...review, Maintainability_rating: e.target.value})}
                                 name="Maintainability_rating"
                                 maxLength="3"
                                 value={review.Maintainability_rating}
@@ -280,7 +304,7 @@ function Review() {
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Maintainability_description: e.target.value})}
                               name="Maintainability_description"
                     value={review.Maintainability_description}
                     /> 
