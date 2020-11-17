@@ -137,27 +137,52 @@ function Review() {
     
                 <div id='Debug_description'>
                     <h2> Debug Description {review.Debug_rating}/100 </h2>
-                    <p> {review.Debug_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                    value={review.Debug_description}
+                    /> 
                 </div>
     
                 <div id='Model_description'>
                     <h2> Model Description {review.Model_rating}/100 </h2>
-                    <p> {review.Model_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                    value={review.Model_description}
+                    /> 
                 </div>
     
                 <div id='Refactor_description'>
                     <h2> Refactor Description {review.Refactor_rating}/100 </h2>
-                    <p> {review.Refactor_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                    value={review.Refactor_description}
+                    /> 
                 </div>
     
                 <div id='Agile_description'>
                     <h2> Agile Description {review.Agile_rating}/100 </h2>
-                    <p> {review.Agile_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                              value={review.Agile_description}
+                    /> 
                 </div>
     
                 <div id='Maintainability_description'>
                     <h2> Maintainability Description {review.Maintainability_rating}/100 </h2>
-                    <p> {review.Maintainability_description} </p>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => handleChange(e)}
+                    value={review.Maintainability_description}
+                    /> 
                 </div>
     
     
