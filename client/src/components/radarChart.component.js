@@ -16,7 +16,7 @@ function RadarChartRecharts() {
         const data = await fetch('http://localhost:9000/reviews/ratings');
         const ratings = await data.json();
         console.log(ratings)
-        const latestRatings = Object.entries(ratings.slice(-1)[0]).map(([x, y]) => ({ subject: x, score: y }));
+        const latestRatings = Object.entries(ratings.slice(-1)[0]).map(([x, y]) => ({ subject: x.replace('_rating', ''), score: y }));
         console.log(latestRatings);
         setRatings(latestRatings)
       };
