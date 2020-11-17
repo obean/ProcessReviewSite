@@ -8,6 +8,7 @@ import SignUp from "./components/sign-up.component";
 import Profile from "./components/profile";
 import BookReview from "./components/bookReview.component";
 import Review from "./components/review"
+import DatePicker from "./components/setAvailability.component"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/profile" component={Profile} />
         <Route path="/book-review" component={BookReview} />
         <Route path="/reviews/:id" component={Review} />
+        <Route path="/setAvailability" component={DatePicker} />
       </Switch>
 
     </div>
