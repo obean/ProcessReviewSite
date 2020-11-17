@@ -23,11 +23,14 @@ function RadarChartRecharts() {
 
       
     return (
-      <RadarChart cx={300} cy={250} outerRadius={150} width={500} height={500} data={ratings}>
+      <RadarChart cx={350} cy={200} outerRadius={150} width={700} height={500} data={ratings}
+      margin={{
+          bottom: 50,
+        }}>
         <PolarGrid gridType='circle'/>
         <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis angle={30} domain={[0, 100]} />
-        <Radar name="Mike" dataKey="score" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
+        <PolarRadiusAxis angle={20} domain={[0, 100]} />
+        <Radar name="Latest Review" dataKey="score" stroke="#FF6600" fill="#00ABFF" fillOpacity={0.65} />
         <Legend />
       </RadarChart>
     );
