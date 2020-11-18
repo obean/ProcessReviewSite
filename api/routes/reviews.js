@@ -16,6 +16,7 @@ router.get('/all', async function (req, res, next) {
   }
 });
 
+
 router.post('/create', async function(req, res){
   try{
     for(let i = 0; i <= req.body.dateNames.length-1; i++){
@@ -27,6 +28,7 @@ router.post('/create', async function(req, res){
     res.status(200).send()
   }catch (err) {res.status(401).send("review creation failed")}
 })
+
 
 router.post('/submit-feedback', async function (req, res) {
   const toUpdate = Object.keys(req.body.review)
@@ -55,6 +57,8 @@ router.post('/submit-feedback', async function (req, res) {
   })
   res.status(200).send(JSON.stringify(affectedRows))
 
+
+})
 
 })
 
