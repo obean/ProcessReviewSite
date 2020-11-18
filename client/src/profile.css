@@ -35,3 +35,37 @@
     1px 1px var(--shadow), 1.5px 1.5px var(--shadow), 1.25px 1.25px var(--shadow), 1.75px 1.75px var(--shadow),
     0.5px 0.5px var(--shadow), 0.25px 0.25px var(--shadow), 0.75px 0.75px var(--shadow);
   }
+
+  .review_head {
+    font-family: 'Merriweather Sans', sans-serif;    
+    color: silver
+  }
+
+  .text_area_review {
+    resize: none;
+    background-color: rgb(59, 56, 230);
+    border-radius: 8px;
+    border:2px solid #3b5998;
+    -webkit-box-shadow: -2px 1px 10px 0px rgba(0,0,0,0.39); 
+    box-shadow: -2px 1px 10px 0px rgba(0,0,0,0.39);
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-family: 'Quicksand', sans-serif, white;
+    color: silver;
+    font-size:'125%';
+  }
+  .text_area_score {
+    resize: none;
+    background-color: rgb(59, 56, 230);
+    border-radius: 8px;
+    border:2px solid #3b5998;
+    -webkit-box-shadow: -2px 1px 10px 0px rgba(0,0,0,0.39); 
+    box-shadow: -2px 1px 10px 0px rgba(0,0,0,0.39);
+    font-family: 'Quicksand', sans-serif;
+    color: silver;
+    font-size:'125%';
+  }
+  .review_label {
+    font-family: 'Quicksand', sans-serif, white;
+    color: silver;
+    font-size:'250%';
+  }

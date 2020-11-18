@@ -13,6 +13,14 @@ router.get('/all', async function (req, res, next) {
     );
 
     res.send(JSON.stringify(reviews));
+  }else if(req.param('reviewerId')){
+    const reviews = await models.Review.findAll(
+      {
+        where: { reviewerId: req.param('reviewerId') }
+      }
+    );
+
+    res.send(JSON.stringify(reviews));
   }
 });
 
