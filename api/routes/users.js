@@ -101,13 +101,18 @@ router.get('/', async function(req, res, next) {
 
 
   router.post('/new', async function(req, res, next) {
-    await console.log(req.body)
+ 
   const saltRounds = 10;
   const salt = bcrypt.genSaltSync(saltRounds);
   console.log(salt)
   const hash = bcrypt.hashSync(req.body.password, salt)
   const user = await models.User.create({ firstName: req.body.firstName, username: req.body.username, lastName: req.body.lastName, password: hash, email: req.body.email, isAdmin: req.body.isAdmin });
   
+  if(await user){
+  res.status(200).send()
+} else {
+  console.log("done")
+}
 });
 
 
