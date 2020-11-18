@@ -16,8 +16,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var reviewsRouter = require('./routes/reviews');
 
-var cors = require('cors')// DUPLICATE LINE <<<<<DELETE
-
 
 var app = express();
 
@@ -30,12 +28,10 @@ app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: true })); ///changed from false 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 //add flash for auth
 app.use(flash());
-//enable cors
-app.use(cors()); // DUPLICATE LINE <<<<<DELETE
 
 // Adding seesion/cookies
 app.use(session({ cookie: { name: "cookie" }, 
