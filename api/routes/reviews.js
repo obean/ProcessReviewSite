@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 
+
 router.get('/all', async function (req, res, next) {
 
   // console.log(req.param('id') + " params!!!!")
@@ -13,8 +14,17 @@ router.get('/all', async function (req, res, next) {
     );
 
     res.send(JSON.stringify(reviews));
+  }else if(req.param('reviewerId')){
+    const reviews = await models.Review.findAll(
+      {
+        where: { reviewerId: req.param('reviewerId') }
+      }
+    );
+
+    res.send(JSON.stringify(reviews));
   }
 });
+
 
 
 router.post('/create', async function(req, res){

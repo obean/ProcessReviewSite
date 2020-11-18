@@ -4,6 +4,8 @@ import ReviewList from './reviewList.component'
 import RadarChartRecharts from "./radarChart.component";
 import LineChart from './lineChart.component'
 import BarChartRechart from './barChart.component'
+import DatePicker from './setAvailability.component'
+import AwaitingFeedback from  './upcomingRev.component.js'
 
 import { Redirect } from 'react-router'
 import { useHistory } from "react-router"
@@ -34,21 +36,27 @@ function Profile() {
   } catch(e) {console.log(e)}
   };
  
-    return (
+    if(!user.isAdmin){
+     return (
       <div className="Profile">
         <h1>  hello {user.username}</h1>
-
         <div className="grid-container">
-    
           <div className="grid-item"> <BarChartRechart/> </div>
           <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
-          <div className="grid-item"> <RadarChartRecharts />  </div>
+          <div className="grid-item"> <RadarChartRecharts />  </div> 
           <div className="grid-item"> <LineChart /></div>
-        
         </div>
        
       </div>
-    );}
+    )}else {
+      return (
+        <div className="Profile"> 
+          <div className="grid-item">  <DatePicker/></div>
+          <div className="grid-item">  <AwaitingFeedback/></div>
+        </div>
+      )
+    }
+}
 
 
 export default Profile;
