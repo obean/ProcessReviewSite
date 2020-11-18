@@ -16,8 +16,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var reviewsRouter = require('./routes/reviews');
 
-var cors = require('cors')// DUPLICATE LINE <<<<<DELETE
-
 
 var app = express();
 
@@ -25,17 +23,22 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Added this to fetch build from client:
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'))
+}
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: true })); ///changed from false 
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 //add flash for auth
 app.use(flash());
-//enable cors
-app.use(cors()); // DUPLICATE LINE <<<<<DELETE
 
 // Adding seesion/cookies
 app.use(session({ cookie: { name: "cookie" }, 
@@ -47,8 +50,6 @@ app.use(session({ cookie: { name: "cookie" },
 var passport = require('passport')
 app.use(passport.initialize())
 app.use(passport.session())
-
-
 
 // Routes setup
 app.use('/', indexRouter);
