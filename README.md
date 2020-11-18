@@ -14,7 +14,7 @@ npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
 ```
 Others commands:
-Commands:
+```
   sequelize db:migrate                        Run pending migrations
   sequelize db:migrate:schema:timestamps:add  Update migration table to have timestamps
   sequelize db:migrate:status                 List the status of all migrations
@@ -34,3 +34,4 @@ Commands:
   sequelize migration:generate                Generates a new migration file      [aliases: migration:create]
   sequelize model:generate                    Generates a model and its migration [aliases: model:create]
   sequelize seed:generate                     Generates a new seed file           [aliases: seed:create]
+```
