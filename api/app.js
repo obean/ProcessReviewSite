@@ -23,6 +23,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+// Added this to fetch build from client:
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static('client/build'))
+}
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(cors())
@@ -43,8 +50,6 @@ app.use(session({ cookie: { name: "cookie" },
 var passport = require('passport')
 app.use(passport.initialize())
 app.use(passport.session())
-
-
 
 // Routes setup
 app.use('/', indexRouter);

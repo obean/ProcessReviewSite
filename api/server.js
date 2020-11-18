@@ -17,9 +17,7 @@ app.set('port', port);
 
 console.log(`Server is listening on ${port}`)
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'))
-}
+
 
 /**
  * Create HTTP server.
