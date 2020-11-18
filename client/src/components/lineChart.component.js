@@ -5,9 +5,11 @@ import {
 
 
 const RatingsList = () => {
+ 
   useEffect(() => {
     fetchRatings();
   }, []);
+
 
   const [ratings, setRatings] = useState([]);
 
@@ -30,8 +32,9 @@ const RatingsList = () => {
       }
     }
   }
-  
+
   formatter()
+  console.log(ratings)
   
   return (
     <LineChart

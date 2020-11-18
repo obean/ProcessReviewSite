@@ -26,8 +26,10 @@ export default class Login extends Component {
             body: JSON.stringify(this.state),
             
         })
-        .then((result) => result.json())
-        .then((info) => {console.log(info)})
+        .then((result) => {
+            result.json();
+            console.log(result.json)
+            this.props.history.push("/profile");})
         
     }
 

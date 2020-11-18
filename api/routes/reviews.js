@@ -26,24 +26,42 @@ router.get('/get-review', async function (req, res) {
   res.status(200).send(JSON.stringify(review))
 })
 
+// router.get('/ratings', async function (req, res, next) {
+
+//   const ratings = await models.Review.findAll({
+//     attributes: [
+//       "TDD_rating",
+//       "Fluency_rating",
+//       "Debug_rating",
+//       "Model_rating",
+//       "Refactor_rating",
+//       "Agile_rating",
+//       "Maintainability_rating"],
+//     where: {
+//       userId: 4
+//     }
+//   });
+
+//   res.send(JSON.stringify(ratings));
+// });
+
 router.get('/ratings', async function (req, res, next) {
-
-  const ratings = await models.Review.findAll({
-    attributes: [
-      "TDD_rating",
-      "Fluency_rating",
-      "Debug_rating",
-      "Model_rating",
-      "Refactor_rating",
-      "Agile_rating",
-      "Maintainability_rating"],
-    where: {
-      userId: 1
-    }
+  if(req.param('id')){
+    const ratings = await models.Review.findAll({
+      attributes: [
+        "TDD_rating",
+        "Fluency_rating",
+        "Debug_rating",
+        "Model_rating",
+        "Refactor_rating",
+        "Agile_rating",
+        "Maintainability_rating"],
+      where: {
+        userId: req.param('id')
+      }
+    });
+    res.send(JSON.stringify(ratings));}
   });
-
-  res.send(JSON.stringify(ratings));
-});
 
 router.get('/book', async function (req, res, next) {
   const availableReviews = await models.Review.findAll({
