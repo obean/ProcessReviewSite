@@ -5,19 +5,23 @@ import {
 
 const BarChartRechart = () => {
  
-    useEffect(() => {
-      fetchRatings();
-    }, []);
-  
-  
-    const [ratings, setRatings] = useState([]);
-  
-    const fetchRatings = async (res) => {
-      const data = await fetch('http://localhost:9000/reviews/ratings');
-      const ratings = await data.json();
-      setRatings(ratings)
-    };
-  
+  useEffect(() => {
+    fetchRatings();
+  }, []);
+
+
+  const [ratings, setRatings] = useState([]);
+  const [user, setUser] = useState([])
+
+  const fetchRatings = async (res) => {
+    const data = await fetch('http://localhost:9000/users/logged-in');
+    const user = await data.json();
+    setUser(user)
+    const data1 = await fetch(`http://localhost:9000/reviews/ratings?id=${user.id}`);
+    const ratings = await data1.json();
+    setRatings(ratings)
+  };
+
     const formatter = () => {
       for (let index = 0; index < ratings.length; index++) {
         ratings[index]['name'] = index + 1;
