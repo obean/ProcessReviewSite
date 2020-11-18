@@ -48,18 +48,20 @@ function DatePicker() {
     }catch (e) {console.log(e)}  
   }  
      
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     let dateNames = []
     for(let i = 1; i <= value.length -1; i++){
       dateNames.push(`${value[i].getDate()}/${value[i].getMonth() + 1}/${value[i].getFullYear()}`)
     }
-    fetch('http://localhost9000/reviews/create', {
+    try{
+    await fetch('http://localhost:9000/reviews/create', {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'
       }, 
       body: JSON.stringify({dateNames, id: user.id})
     })
+  }catch(err) {console.log(err)}
     
   }
     return (
