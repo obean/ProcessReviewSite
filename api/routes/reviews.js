@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
-const Op = require('Sequelize').Op;
+
 
 router.get('/all', async function (req, res, next) {
 
@@ -25,25 +25,7 @@ router.get('/all', async function (req, res, next) {
   }
 });
 
-// router.get('/awaiting-feeback', async function(req, res) {
-//   if(req.param('id')){
-//    const reviews =  await models.Review.findAll({
-//       where: {
-//         reviewerId: req.param('id'),
-//         $or: [
-//           TDD_rating,
-//            TDD_description
 
-//         ],
-      
-
-       
-
-//       }
-//     })
-//     console.log(reviews)
-//   }
-// })
 
 router.post('/create', async function(req, res){
   try{
