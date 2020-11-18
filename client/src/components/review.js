@@ -4,7 +4,7 @@ import ReviewList from './reviewList.component'
 import { Redirect, useParams } from 'react-router';
 import { userInfo } from "os";
 import { useHistory } from "react-router"
-
+// HELLO COURTENAY
 
 function Review() {
     let history = useHistory()
@@ -35,11 +35,27 @@ function Review() {
     const fetchReview = async () => {
         const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
         const review = await data.json();
+        
         setReview(review)
+        console.log(review)
     }
 
     const handleChange = (e) => {
+        if(e.target.name.split('_')[1] == "rating"){
+            parseInt(e.target.value) > 100 ? setReview({[e.target.name]: 100}) : setReview({[e.target.name]: e.target.value})
+        }
+        else{
         setReview({[e.target.name]: e.target.value})
+        }
+    }
+    const handleSubmit =  () => {
+        fetch('http://localhost:9000/reviews/submit-feedback', {
+            method: "POST",
+            headers: {
+                "Content-Type" : 'application/json'
+            }, 
+            body: JSON.stringify({review, id: id})
+        }).then(result => console.log(result))
     }
 
     
@@ -95,13 +111,25 @@ function Review() {
         </div>
     );
     }else {
-        return (
+        return ( 
+
+          
             <div>
+                
                 <h1> Review Page </h1>
                 <div id='BookingDate'>
-                    <h2>d</h2>
+                    <h2>date</h2>
                     <p> {review.booking_date}</p>
                 </div>
+
+                <div id="submit_button">
+                    <button onClick={() => handleSubmit()}>
+                        Submit Feedback
+                    </button>
+                </div> 
+                 
+
+          
     
                 <div id='GeneralFeedback'>
                     <h2> General Feedback </h2>
@@ -115,72 +143,169 @@ function Review() {
                 </div>
     
                 <div id='TDD_description'>
-                    <h2> TDD Description {review.TDD_rating}/100</h2>
+                    <h2> TDD Description>/h2></h2>
+                        <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, TDD_rating: e.target.value})}
+                                name="TDD_rating"
+                                maxLength="3"
+                                value={review.TDD_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, TDD_description: e.target.value})}
                               name="TDD_description"
                     value={review.TDD_description}
                     />  
                 </div>
-    
-                <div id='Fluency_description'>
-                    <h2> Fluency Description {review.Fluency_rating}/100 </h2>
+
+                <div id='Agile_description'>
+                    <h2> Agile Description>/h2></h2>
+                        <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Agile_rating: e.target.value})}
+                                name="Agile_rating"
+                                maxLength="3"
+                                value={review.Agile_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Agile_description: e.target.value})}
+                              name="Agile_description"
+                    value={review.Agile_description}
+                    />  
+                </div>
+
+                <div id='Fluency_description'>
+                <h2> Fluency Description>/h2></h2>
+                        <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Fluency_rating: e.target.value})}
+                                name="Fluency_rating"
+                                maxLength="3"
+                                value={review.Fluency_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
+                    <textarea
+                              rows={5}
+                              cols={200}
+                              onChange={(e) => setReview({...review, Fluency_description: e.target.value})}
+                              name="Fluency_description"
                     value={review.Fluency_description}
                     />  
                 </div>
     
                 <div id='Debug_description'>
-                    <h2> Debug Description {review.Debug_rating}/100 </h2>
+                <h2> Debug Description>/h2></h2>
+                <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Debug_rating: e.target.value})}
+                                name="Debug_rating"
+                                maxLength="3"
+                                value={review.Debug_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Debug_description: e.target.value})}
+                              name="Debug_description"
                     value={review.Debug_description}
                     /> 
                 </div>
     
                 <div id='Model_description'>
-                    <h2> Model Description {review.Model_rating}/100 </h2>
+                <h2> Model Description>/h2></h2>
+                <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Model_rating: e.target.value})}
+                                name="Model_rating"
+                                maxLength="3"
+                                value={review.Model_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Model_description: e.target.value})}
+                              name="Model_description"
                     value={review.Model_description}
                     /> 
                 </div>
     
                 <div id='Refactor_description'>
-                    <h2> Refactor Description {review.Refactor_rating}/100 </h2>
+                <h2> Refactor Description>/h2></h2>
+                <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Refactor_rating: e.target.value})}
+                                name="Refactor_rating"
+                                maxLength="3"
+                                value={review.Refactor_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Refactor_description: e.target.value})}
+                              name="Refactor_description"
                     value={review.Refactor_description}
                     /> 
                 </div>
     
-                <div id='Agile_description'>
-                    <h2> Agile Description {review.Agile_rating}/100 </h2>
-                    <textarea
-                              rows={5}
-                              cols={200}
-                              onChange={(e) => handleChange(e)}
-                              value={review.Agile_description}
-                    /> 
-                </div>
-    
                 <div id='Maintainability_description'>
-                    <h2> Maintainability Description {review.Maintainability_rating}/100 </h2>
+                <h2> Maintainability Description>/h2></h2>
+                <label fontSize="20px">
+                         Set Proficiency score:
+                         </label>
+                         <textarea 
+                                rows={1}
+                                cols={3}
+                                onChange={(e) => setReview({...review, Maintainability_rating: e.target.value})}
+                                name="Maintainability_rating"
+                                maxLength="3"
+                                value={review.Maintainability_rating}
+                        />
+                        <label>/100</label>
+                         <br/>
                     <textarea
                               rows={5}
                               cols={200}
-                              onChange={(e) => handleChange(e)}
+                              onChange={(e) => setReview({...review, Maintainability_description: e.target.value})}
+                              name="Maintainability_description"
                     value={review.Maintainability_description}
                     /> 
                 </div>

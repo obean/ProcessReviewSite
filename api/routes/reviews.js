@@ -4,7 +4,7 @@ var models = require('../models');
 
 router.get('/all', async function (req, res, next) {
 
-  console.log(req.param('id') + " params!!!!")
+  // console.log(req.param('id') + " params!!!!")
   if (req.param('id')) {
     const reviews = await models.Review.findAll(
       {
@@ -17,6 +17,48 @@ router.get('/all', async function (req, res, next) {
 });
 
 
+router.post('/create', async function(req, res){
+  try{
+    for(let i = 0; i <= req.body.dateNames.length-1; i++){
+    await models.Review.create({
+      reviewerId: req.body.id,
+      booking_date: req.body.dateNames[i]
+    })
+    }
+    res.status(200).send()
+  }catch (err) {res.status(401).send("review creation failed")}
+})
+
+
+router.post('/submit-feedback', async function (req, res) {
+  const toUpdate = Object.keys(req.body.review)
+  console.log(toUpdate)
+  
+  const [numberOfAffectedRows, affectedRows] = await models.Review.update({
+    general_feedback: req.body.review.general_feedback,
+    TDD_rating: req.body.review.TDD_rating,
+    TDD_description: req.body.review.TDD_description,
+    Fluency_description: req.body.review.Fluency_description,
+    Fluency_rating: req.body.review.Fluency_rating,
+    Debug_description: req.body.review.Debug_description,
+    Model_description: req.body.review.Model_description,
+    Refactor_description: req.body.review.Refactor_description,
+    Maintainability_rating: req.body.review.Maintainability_rating,
+    Maintainability_description: req.body.review.Maintainability_description,
+    Refactor_rating: req.body.review.Refactor_rating,
+    Model_rating: req.body.review.Model_rating,
+    Debug_rating: req.body.review.Debug_rating,
+    Agile_rating: req.body.review.Agile_rating,
+    Agile_description: req.body.review.Agile_description,
+  }, {
+    where: { id: req.body.id },
+    returning: true,
+    plain: true
+  })
+  res.status(200).send(JSON.stringify(affectedRows))
+
+
+})
 
 
 
@@ -73,8 +115,8 @@ router.get('/book', async function (req, res, next) {
 })
 
 router.post('/book', async function (req, res) {
-  console.log(req.body.booking.user)
-  console.log(req.body.booking.review)
+  // console.log(req.body.booking.user)
+  // console.log(req.body.booking.review)
   // await models.Review.findByPk(req.body.booking.review)
   // .then((review) => review.update({
   //   userId: req.body.user
