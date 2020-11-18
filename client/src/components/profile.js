@@ -51,8 +51,10 @@ function Profile() {
    )}else {
      return (
        <div className="Profile"> 
-         <div className="grid-item">  <DatePicker/></div>
-         <div className="grid-item">  <AwaitingFeedback/></div>
+         <div className="grid-container">
+           <div className="grid-item">  <DatePicker/></div>
+           <div className="grid-item">  <AwaitingFeedback/></div>
+         </div>
        </div>
      )
    };}
