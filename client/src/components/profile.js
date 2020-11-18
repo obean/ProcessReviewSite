@@ -36,7 +36,7 @@ function Profile() {
  
     return (
       <div className="Profile">
-        <h1>  hello {user.username}</h1>
+        <h1 className="welcome">  Welcome {user.username}</h1>
 
         <div className="grid-container">
     

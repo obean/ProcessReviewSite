@@ -9,6 +9,10 @@ function RadarChartRecharts() {
         fetchRatings();
       }, []);
     
+      const renderColorfulLegendText = (value, entry) => {
+        const { color } = entry;
+        return <span style={{ color }}>{value}</span>;
+      };
     
       const [ratings, setRatings] = useState([]);
       const [user, setUser] = useState([])
@@ -30,15 +34,15 @@ function RadarChartRecharts() {
 
       
     return (
-      <RadarChart cx={350} cy={200} outerRadius={150} width={700} height={500} data={ratings}
+      <RadarChart cx={350} cy={200} outerRadius={170} width={700} height={500} data={ratings}
       margin={{
           bottom: 50,
         }}>
-        <PolarGrid gridType='circle'/>
-        <PolarAngleAxis dataKey="subject" />
-        <PolarRadiusAxis angle={20} domain={[0, 100]} />
-        <Radar name="Latest Review" dataKey="score" stroke="#FF6600" fill="#00ABFF" fillOpacity={0.65} />
-        <Legend />
+        <PolarGrid gridType='circle' stroke="#07BEB8"/>
+        <PolarAngleAxis dataKey="subject" stroke="#cae9ff"/>
+        <PolarRadiusAxis angle={20} domain={[0, 100]} stroke="#9CEAEF"/>
+        <Radar name="Latest Review" dataKey="score" stroke="#3DCCC7" fill="#00ABFF" fillOpacity={0.65} />
+        <Legend formatter={renderColorfulLegendText} />
       </RadarChart>
     );
   }
