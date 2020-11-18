@@ -17,14 +17,16 @@ function ReviewList(props) {
 
   return (
     <div className="reviews">
-      <h3 className="review-header">Your booked Reviews</h3> 
+      <h3 className="review-header" data-text="Your booked Reviews">Your Booked Reviews</h3> 
        { props.reviews.map(review => (
-      <li key={review.id}>
+      <ul class="single-counter-rule">
+      <li key={review.id} className="repeating-counter-rule"> 
         <Link to={`reviews/${review.id}`} className="review-item">
           {review.booking_date}
           </Link>
           <button className="cancel-button" onClick={() => cancelThis(review.id)}>Cancel</button>
          </li>
+         </ul>
        ))}
        <Link to={'/book-review'}> Book a review</Link>
     </div>

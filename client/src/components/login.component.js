@@ -42,7 +42,7 @@ export default class Login extends Component {
 
                 <div className="form-group">
                     <label>Username</label>
-                    <input type="text" className="form-control" placeholder="Enter email" value={this.state.value} onChange={this.handleChange} name="username" />
+                    <input type="text" className="form-control" placeholder="Enter username" value={this.state.value} onChange={this.handleChange} name="username" />
                 </div>
 
                 <div className="form-group">

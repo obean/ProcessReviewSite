@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900');
+
 .cancel-button {
 display: inline-block;
 margin-left: 20px;
@@ -26,15 +28,30 @@ margin-left: 20px;
  }
 
 .reviews{
-    color: #07a0c3;
+    color: #0000b8;
     font-weight: bold;
     
 }
 
-.review-header{
-    color:green;
-    text-decoration: underline;
+.review-header {
+    margin-bottom: .5em;
+    font-family: 'Rubik', sans-serif;
+    font-size: 4rem;
 }
+    
+    .review-header {
+    position: relative;
+    background: linear-gradient(to right, #000052, #0000b8, #0000ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
+    
+    .review-header:before,
+    .review-header:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0; }
+    
 
 .review-item {
     color: white; 
@@ -59,3 +76,14 @@ margin-left: 20px;
                  5px 5px #fe4902, 
                  6px 6px #fe4902;
  }
+
+ li.repeating-counter-rule {
+    text-align: left;
+ }
+ ul.single-counter-rule > li:nth-child(1) {
+    margin-top: 10px;
+    list-style: "🕔 ";
+    list-style-position: outside;
+  }
+
+ 
