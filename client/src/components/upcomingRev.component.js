@@ -26,21 +26,38 @@ function AwaitingFeedback(props) {
   };
 
   const fieldsEmpty = (review) => {
-   return Object.values(review).slice(2,18).indexOf(null) != -1 ? true : false
+   return Object.values(review).slice(2,17).indexOf(null) != -1 ? true : false
   }
 
+  const hasPassed = (review) => {
+    let dateArr = review.booking_date.split('/')
+  return  new Date(`${dateArr[1]}/${dateArr[0]}/${dateArr[2]}`) < new Date  
+  }
+
+  const isBooked = (review) => {
+    return review.userId != null
+  }
+ 
 
   return (
     <div>
       <h3>These reviews haven't had feedback yet</h3> 
       
-      {reviews.filter(review => fieldsEmpty(review)).map(review => <li key={review.id}>
+      {reviews.filter(review => (fieldsEmpty(review) && hasPassed(review))).map(review => <li key={review.id}>
+        <Link to={`reviews/${review.id}`}>
+          {review.booking_date}
+          </Link>
+         </li>)
+        
+        }
+      <h2> Your upcoming Reviews </h2>
+      {reviews.filter(review => (!hasPassed(review))).map(review => <li key={review.id}>
         <Link to={`reviews/${review.id}`}>
           {review.booking_date}
           </Link>
          </li>)}
     </div>
-  )
+  ) 
 
 
 }
