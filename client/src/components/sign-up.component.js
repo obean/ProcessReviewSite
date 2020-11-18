@@ -25,7 +25,7 @@ export default class SignUp extends Component {
         this.state.isAdmin == "on" ? this.setState({isAdmin: true}) : this.setState({isAdmin: false})
        // const {firstName, lastName, email,} = this.state;
 
-        fetch('http://localhost:9000/users/new', {
+        fetch('/api/users/new', {
         method: "POST",
         headers: {
             'Content-Type' : 'application/json'
@@ -34,7 +34,7 @@ export default class SignUp extends Component {
         
         })
         .then((result) => {if(result.ok){
-            fetch('http://localhost:9000/users/login', {
+            fetch('/api/users/login', {
             method: "POST",
             headers: {
             'Content-Type' : 'application/json'
@@ -58,7 +58,7 @@ export default class SignUp extends Component {
         return (
         <div className="auth-wrapper">
           <div className="auth-inner">
-            <form method='POST' action='http://localhost:9000/users/new'>
+            <form method='POST' action='/api/users/new'>
                 <h3>Sign Up</h3>
 
                 <div className="form-group">

@@ -40,7 +40,7 @@ function DatePicker() {
 
   const fetchUser = async (res) => {
     try {
-      const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
+      const data = await fetch('/api/users/logged-in').catch((err) => console.log(err));
       const user = await data.json();
       
         setUser(user)
@@ -54,7 +54,7 @@ function DatePicker() {
       dateNames.push(`${value[i].getDate()}/${value[i].getMonth() + 1}/${value[i].getFullYear()}`)
     }
     try{
-    await fetch('http://localhost:9000/reviews/create', {
+    await fetch('/api/reviews/create', {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'

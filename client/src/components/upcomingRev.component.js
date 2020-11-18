@@ -11,13 +11,13 @@ function AwaitingFeedback(props) {
 
   const fetchUser = async (res) => {
     try {
-    const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
+    const data = await fetch('/api/users/logged-in').catch((err) => console.log(err));
     const user = await data.json();
     if(await user == "unauthorised") {
       console.log(user)
     }else {
       setUser(user)
-      const revData = await fetch(`http://localhost:9000/reviews/all?reviewerId=${user.id}`);
+      const revData = await fetch(`/api/reviews/all?reviewerId=${user.id}`);
       const reviews = await revData.json();
       console.log(reviews)
       setReviews(reviews)
