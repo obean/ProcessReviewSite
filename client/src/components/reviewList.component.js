@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function ReviewList(props) {
 
   const cancelThis = (id) => {
-    fetch('/api/reviews/cancel', {
+    fetch('/reviews/cancel', {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'

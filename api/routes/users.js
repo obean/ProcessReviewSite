@@ -13,7 +13,7 @@ module.exports = ( passport) => {
 
   //deserialize
   passport.deserializeUser(function(user, cb) {
-    models.User.findById(user.id, function (err, user) {
+    models.User.findByPk(user.id, function (err, user) {
       if (err) { return cb(err); }
       cb(null, user);
     });
@@ -106,12 +106,16 @@ router.get('/', async function(req, res, next) {
   const salt = bcrypt.genSaltSync(saltRounds);
   console.log(salt)
   const hash = bcrypt.hashSync(req.body.password, salt)
+  try {
   const user = await models.User.create({ firstName: req.body.firstName, username: req.body.username, lastName: req.body.lastName, password: hash, email: req.body.email, isAdmin: req.body.isAdmin });
   
   if(await user){
   res.status(200).send()
 } else {
   res.status(400).send()
+}
+} catch(e) {
+  console.log(e)
 }
 });
 
