@@ -11,14 +11,21 @@ function RadarChartRecharts() {
     
     
       const [ratings, setRatings] = useState([]);
-    
+      const [user, setUser] = useState([])
+
       const fetchRatings = async (res) => {
-        const data = await fetch('http://localhost:9000/reviews/ratings');
-        const ratings = await data.json();
-        console.log(ratings)
+        const data = await fetch('http://localhost:9000/users/logged-in');
+        const user = await data.json();
+        setUser(user)
+        const data1 = await fetch(`http://localhost:9000/reviews/ratings?id=${user.id}`);
+        let ratings = await data1.json();
+        if (ratings.length < 1){
+           ratings = null
+        } else {
         const latestRatings = Object.entries(ratings.slice(-1)[0]).map(([x, y]) => ({ subject: x.replace('_rating', ''), score: y }));
         console.log(latestRatings);
         setRatings(latestRatings)
+        }
       };
 
       
