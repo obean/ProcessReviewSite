@@ -11,7 +11,7 @@ const { Sequelize } = require('sequelize');
 
 let sequelize;
 if (config.url) {
-  sequelize = new Sequelize(config.use_env_variable, config);
+  sequelize = new Sequelize(config.url, config);
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
