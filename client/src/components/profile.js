@@ -40,7 +40,7 @@ function Profile() {
   if(!user.isAdmin){
     return (
      <div className="Profile">
-       <h1>  hello {user.username}</h1>
+       <h1  className="welcome">  hello {user.username}</h1>
        <div className="grid-container">
          <div className="grid-item"> <BarChartRechart/> </div>
          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
