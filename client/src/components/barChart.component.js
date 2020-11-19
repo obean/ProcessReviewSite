@@ -4,7 +4,12 @@ import {
 } from 'recharts';
 
 const BarChartRechart = () => {
- 
+  
+  const renderColorfulLegendText = (value, entry) => {
+    const { color } = entry;
+    return <span style={{ color }}>{value}</span>;
+  };
+
   useEffect(() => {
     fetchRatings();
   }, []);
@@ -38,7 +43,9 @@ const BarChartRechart = () => {
   
     formatter()
     console.log(ratings)
-    
+
+   
+
     return (
       <BarChart
         width={800}
@@ -49,17 +56,17 @@ const BarChartRechart = () => {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+        <XAxis dataKey="name" stroke="white" />
+        <YAxis stroke="white"/>
         <Tooltip />
-        <Legend />
-        <Bar dataKey="TDD" fill="#8884d8" />
-        <Bar dataKey="Fluency" fill="#82ca9d" />
-        <Bar dataKey="Debug" fill="#FFF80B" />
-        <Bar dataKey="Model" fill="#54FF15" />
-        <Bar dataKey="Refactor" fill="#B60FF3" />
-        <Bar dataKey="Agile" fill="#FFC115" />
-        <Bar dataKey="Maintainability" fill="#F30FE4" />
+        <Legend formatter={renderColorfulLegendText} />
+        <Bar dataKey="TDD" fill="#ffadad" opacity="0.8" />
+        <Bar dataKey="Fluency" fill="#ffd6a5" opacity="0.8"/>
+        <Bar dataKey="Debug" fill="#fdffb6" opacity="0.8" />
+        <Bar dataKey="Model" fill="#caffbf" opacity="0.8" />
+        <Bar dataKey="Refactor" fill="#9bf6ff" opacity="0.8" />
+        <Bar dataKey="Agile" fill="#a0c4ff" opacity="0.8" />
+        <Bar dataKey="Maintainability" fill="#bdb2ff" opacity="0.8" />
       </BarChart>
     );
   

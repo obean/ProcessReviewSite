@@ -6,6 +6,11 @@ import {
 
 const RatingsList = () => {
  
+  const renderColorfulLegendText = (value, entry) => {
+    const { color } = entry;
+    return <span style={{ color }}>{value}</span>;
+  };
+
   useEffect(() => {
     fetchRatings();
   }, []);
@@ -50,17 +55,17 @@ const RatingsList = () => {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
+      <XAxis dataKey="name" stroke="white" />
+      <YAxis stroke="white" />
       <Tooltip />
-      <Legend />
-      <Line type="monotone" dataKey="TDD" stroke="#8884d8" activeDot={{ r: 8 }} />
-      <Line type="monotone" dataKey="Fluency" stroke="#82ca8d" />
-      <Line type="monotone" dataKey="Debug" stroke="#23ca5d" />
-      <Line type="monotone" dataKey="Model" stroke="#56ca3d" />
-      <Line type="monotone" dataKey="Refactor" stroke="#76ca2d" />
-      <Line type="monotone" dataKey="Agile" stroke="#45ca1d" />
-      <Line type="monotone" dataKey="Maintainability" stroke="#45ca6d" />
+      <Legend formatter={renderColorfulLegendText}/>
+      <Line type="monotone" dataKey="TDD" stroke="#d00000" activeDot={{ r: 8 }} opacity="1" />
+      <Line type="monotone" dataKey="Fluency" stroke="#ffba08" opacity="1" />
+      <Line type="monotone" dataKey="Debug" stroke="#cbff8c" opacity="1"/>
+      <Line type="monotone" dataKey="Model" stroke="#8fe388" opacity="1" />
+      <Line type="monotone" dataKey="Refactor" stroke="#1b998b" opacity="1" />
+      <Line type="monotone" dataKey="Agile" stroke="#5d2e8c" opacity="1" />
+      <Line type="monotone" dataKey="Maintainability" stroke="#ff7b9c" opacity="1" />
     </LineChart>
   );
 
