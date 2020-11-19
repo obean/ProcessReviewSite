@@ -6,7 +6,7 @@ import './reviewList.component.css'
 function ReviewList(props) {
 
   const cancelThis = (id) => {
-    fetch('http://localhost:9000/reviews/cancel', {
+    fetch('/reviews/cancel', {
       method: "POST",
       headers: {
         'Content-Type' : 'application/json'

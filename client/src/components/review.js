@@ -19,7 +19,7 @@ function Review() {
 
   const fetchUser = async (res) => {
     try {
-      const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
+      const data = await fetch('/users/logged-in').catch((err) => console.log(err));
       const user = await data.json();
       if (await user == "unauthorised") {
         history.push("/sign-in")
@@ -33,7 +33,7 @@ function Review() {
     const { id } = useParams();
     console.log(id)
     const fetchReview = async () => {
-        const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
+        const data = await fetch(`/reviews/get-review?id=${id}`);
         const review = await data.json();
         
         setReview(review)
@@ -49,7 +49,7 @@ function Review() {
         }
     }
     const handleSubmit =  () => {
-        fetch('http://localhost:9000/reviews/submit-feedback', {
+        fetch('/reviews/submit-feedback', {
             method: "POST",
             headers: {
                 "Content-Type" : 'application/json'
