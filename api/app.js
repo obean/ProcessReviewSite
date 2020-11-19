@@ -39,7 +39,10 @@ app.use(cookieParser());
 app.use(flash());
 
 // Adding seesion/cookies
-app.use(session({ cookie: { name: "cookie" }, 
+app.use(session({ cookie: { 
+  name: "cookie",
+  secure: true
+}, 
   secret: 'woot',
   resave: false, 
   saveUninitialized: false})
