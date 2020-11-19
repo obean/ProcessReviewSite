@@ -1,0 +1,10 @@
+.review_border{
+    border: dotted silver;
+    border-radius:  5px;
+    text-decoration-color: aliceblue; 
+}
+
+.review_text {
+    color: whitesmoke;
+    font: 200;
+}
