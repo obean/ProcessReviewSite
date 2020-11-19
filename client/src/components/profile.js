@@ -36,27 +36,30 @@ function Profile() {
   } catch(e) {console.log(e)}
   };
  
-    if(!user.isAdmin){
+
+  if(!user.isAdmin){
+    return (
+     <div className="Profile">
+       <h1  className="welcome">  hello {user.username}</h1>
+       <div className="grid-container">
+         <div className="grid-item"> <BarChartRechart/> </div>
+         <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
+         <div className="grid-item"> <RadarChartRecharts />  </div> 
+         <div className="grid-item"> <LineChart /></div>
+       </div>
+      
+     </div>
+   )}else {
      return (
-      <div className="Profile">
-        <h1>  hello {user.username}</h1>
-        <div className="grid-container">
-          <div className="grid-item"> <BarChartRechart/> </div>
-          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
-          <div className="grid-item"> <RadarChartRecharts />  </div> 
-          <div className="grid-item"> <LineChart /></div>
-        </div>
-       
-      </div>
-    )}else {
-      return (
-        <div className="Profile"> 
-          <div className="grid-item">  <DatePicker/></div>
-          <div className="grid-item">  <AwaitingFeedback/></div>
-        </div>
-      )
-    }
-}
+       <div className="Profile"> 
+         <div className="grid-container">
+           <div className="grid-item">  <DatePicker/></div>
+           <div className="grid-item">  <AwaitingFeedback/></div>
+         </div>
+       </div>
+     )
+   };}
+
 
 
 export default Profile;

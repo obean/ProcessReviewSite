@@ -62,7 +62,7 @@ function Review() {
     if(!user.isAdmin){return (
         <div>
             <h1> Review page </h1>
-            <div id='BookingDate'>
+            <div class="review_head" id='BookingDate'>
                 <h2>date</h2>
                 <p> {review.booking_date}</p>
             </div>
@@ -73,37 +73,37 @@ function Review() {
             </div>
 
             <div id='TDD_description'>
-                <h2> TDD Description {review.TDD_rating}/100</h2>
+                <h2 class="review_head"> TDD Description {review.TDD_rating}/100</h2>
                 <p> {review.TDD_description} </p>
             </div>
 
             <div id='Fluency_description'>
-                <h2> Fluency Description {review.Fluency_rating}/100 </h2>
+                <h2 class="review_head"> Fluency Description {review.Fluency_rating}/100 </h2>
                 <p> {review.Fluency_description} </p>
             </div>
 
             <div id='Debug_description'>
-                <h2> Debug Description {review.Debug_rating}/100 </h2>
+                <h2 class="review_head"> Debug Description {review.Debug_rating}/100 </h2>
                 <p> {review.Debug_description} </p>
             </div>
 
             <div id='Model_description'>
-                <h2> Model Description {review.Model_rating}/100 </h2>
+                <h2 class="review_head"> Model Description {review.Model_rating}/100 </h2>
                 <p> {review.Model_description} </p>
             </div>
 
             <div id='Refactor_description'>
-                <h2> Refactor Description {review.Refactor_rating}/100 </h2>
+                <h2 class="review_head"> Refactor Description {review.Refactor_rating}/100 </h2>
                 <p> {review.Refactor_description} </p>
             </div>
 
             <div id='Agile_description'>
-                <h2> Agile Description {review.Agile_rating}/100 </h2>
+                <h2 class="review_head"> Agile Description {review.Agile_rating}/100 </h2>
                 <p> {review.Agile_description} </p>
             </div>
 
             <div id='Maintainability_description'>
-                <h2> Maintainability Description {review.Maintainability_rating}/100 </h2>
+                <h2 class="review_head"> Maintainability Description {review.Maintainability_rating}/100 </h2>
                 <p> {review.Maintainability_description} </p>
             </div>
 
@@ -116,11 +116,11 @@ function Review() {
           
             <div>
                 
-                <h1> Review Page </h1>
-                <div id='BookingDate'>
-                    <h2>date</h2>
-                    <p> {review.booking_date}</p>
-                </div>
+                <h1 class="review_head"> Review: {review.booking_date} </h1>
+                {/* <div id='BookingDate'>
+                    <h2 class="review_head">date</h2>
+                    <h2 class="review_head"> {review.booking_date}</h2>
+                </div> */}
 
                 <div id="submit_button">
                     <button onClick={() => handleSubmit()}>
@@ -132,22 +132,24 @@ function Review() {
           
     
                 <div id='GeneralFeedback'>
-                    <h2> General Feedback </h2>
+                    <h2 class="review_head"> General Feedback </h2>
                     <textarea
+                    class="text_area_review"
                     name="general_feedback"
                     onChange={(e) => handleChange(e)}
                     rows={5}
                     cols={200}
                     value={review.general_feedback}
                 />  
-                </div>
+                </div> 
     
                 <div id='TDD_description'>
-                    <h2> TDD Description>/h2></h2>
-                        <label fontSize="20px">
+                    <h2 class="review_head"> TDD Description</h2>
+                        <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                                class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, TDD_rating: e.target.value})}
@@ -158,6 +160,7 @@ function Review() {
                         <label>/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, TDD_description: e.target.value})}
@@ -167,11 +170,12 @@ function Review() {
                 </div>
 
                 <div id='Agile_description'>
-                    <h2> Agile Description>/h2></h2>
-                        <label fontSize="20px">
+                    <h2 class="review_head"> Agile Description</h2>
+                    <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                         class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Agile_rating: e.target.value})}
@@ -179,9 +183,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Agile_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Agile_description: e.target.value})}
@@ -191,11 +196,12 @@ function Review() {
                 </div>
 
                 <div id='Fluency_description'>
-                <h2> Fluency Description>/h2></h2>
-                        <label fontSize="20px">
+                <h2 class="review_head"> Fluency Description</h2>
+                <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                         class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Fluency_rating: e.target.value})}
@@ -203,9 +209,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Fluency_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Fluency_description: e.target.value})}
@@ -215,11 +222,12 @@ function Review() {
                 </div>
     
                 <div id='Debug_description'>
-                <h2> Debug Description>/h2></h2>
-                <label fontSize="20px">
+                <h2 class="review_head"> Debug Description</h2>
+                <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                         class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Debug_rating: e.target.value})}
@@ -227,9 +235,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Debug_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Debug_description: e.target.value})}
@@ -239,11 +248,12 @@ function Review() {
                 </div>
     
                 <div id='Model_description'>
-                <h2> Model Description>/h2></h2>
-                <label fontSize="20px">
+                <h2 class="review_head"> Model Description</h2>
+                <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                         class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Model_rating: e.target.value})}
@@ -251,9 +261,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Model_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Model_description: e.target.value})}
@@ -263,11 +274,12 @@ function Review() {
                 </div>
     
                 <div id='Refactor_description'>
-                <h2> Refactor Description>/h2></h2>
-                <label fontSize="20px">
+                <h2 class="review_head"> Refactor Description</h2>
+                <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                         class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Refactor_rating: e.target.value})}
@@ -275,9 +287,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Refactor_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
                     <textarea
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Refactor_description: e.target.value})}
@@ -287,11 +300,12 @@ function Review() {
                 </div>
     
                 <div id='Maintainability_description'>
-                <h2> Maintainability Description>/h2></h2>
-                <label fontSize="20px">
+                <h2 class="review_head"> Maintainability Description</h2>
+                <label class="review_label" fontSize="110%">
                          Set Proficiency score:
                          </label>
                          <textarea 
+                                class="text_area_score"
                                 rows={1}
                                 cols={3}
                                 onChange={(e) => setReview({...review, Maintainability_rating: e.target.value})}
@@ -299,9 +313,10 @@ function Review() {
                                 maxLength="3"
                                 value={review.Maintainability_rating}
                         />
-                        <label>/100</label>
+                        <label class="review_label" fontSize="110%">/100</label>
                          <br/>
-                    <textarea
+                    <textarea   
+                              class="text_area_review"
                               rows={5}
                               cols={200}
                               onChange={(e) => setReview({...review, Maintainability_description: e.target.value})}
