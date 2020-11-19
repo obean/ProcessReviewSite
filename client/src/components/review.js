@@ -4,6 +4,9 @@ import ReviewList from './reviewList.component'
 import { Redirect, useParams } from 'react-router';
 import { userInfo } from "os";
 import { useHistory } from "react-router"
+import '../review.css'
+
+
 // HELLO COURTENAY
 
 function Review() {
@@ -109,8 +112,8 @@ function Review() {
                 </div>
 
                 <div id='GeneralFeedback'>
-                    <h2 onClick={() => hideGeneneralFeedback()} > General Feedback </h2>
-                    {showResult ? <p> {review.general_feedback} </p> : null}
+                    <h2 class="review_head" onClick={() => hideGeneneralFeedback()} > General Feedback <i className="material-icons">unfold_more</i> </h2>
+                    {showResult ? <div class="review_border">  <p class="review_text"> {review.general_feedback} </p> </div> : null}
                 </div>
 
                 <div id='TDD_description'>

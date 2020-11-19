@@ -27,30 +27,31 @@ function BookReview() {
     setUser(user)
   }
 
-  const bookThis =  (id) => {
+  const bookThis = (id) => {
     fetch('http://localhost:9000/reviews/book', {
       method: "POST",
       headers: {
-        'Content-Type' : 'application/json'
-      }, 
-        body: JSON.stringify({booking: {user: user.id, review: id}})
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ booking: { user: user.id, review: id } })
     })
   }
 
   return (
-    
+
     <div className="availableReviews">
+      book Review Page
       {avReviews.map(review => (
         <li key={review.id}>
           {review.booking_date}
           <button onClick={() => bookThis(review.id)}> Book</button>
         </li>
       ))
-      
+
       }
     </div>
 
-    
+
   )
 }
 export default BookReview;
