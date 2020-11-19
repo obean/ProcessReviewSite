@@ -17,7 +17,7 @@ function ReviewList(props) {
 
   return (
     <div className="reviews">
-      <h3 className="review-header" data-text="Your booked Reviews">Your Booked Reviews</h3> 
+      <h3 className="review_head" data-text="Your booked Reviews">Your Booked Reviews</h3> 
        { props.reviews.map(review => (
       <ul class="single-counter-rule">
       <li key={review.id} className="repeating-counter-rule"> 
