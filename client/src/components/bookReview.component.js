@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import "../book.css"
 
 
 function BookReview() {
@@ -37,15 +38,21 @@ function BookReview() {
     })
   }
 
+  const DropDown = () => {
+    setShowResults(!showResult)
+  }
+
+  const [showResult, setShowResults] = useState(false)
+
   return (
 
-    <div className="availableReviews">
-      book Review Page
+    <div className="availableReviews" onClick={() => DropDown()}> AvailableReviews <i className="material-icons">unfold_more</i>
       {avReviews.map(review => (
-        <li key={review.id}>
-          {review.booking_date}
-          <button onClick={() => bookThis(review.id)}> Book</button>
-        </li>
+        <p class="book-border" key={review.id}>
+          {showResult ? <p> {review.booking_date}
+            <button class="book-button" onClick={() => bookThis(review.id)}> Book </button>
+          </p> : null}
+        </p>
       ))
 
       }
