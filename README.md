@@ -17,13 +17,11 @@
          |__||__|
 
 ```
-
-
-A web application designed for Makers students to ease the use of taking Process Reviews during their course. Students can sign in, book reviews and check metrics from their previous reviews to see how they progressing. Reviewers can sign in, create available time slots and view upcoming reviews.  
+A web application designed for students to ease the use of taking Process Reviews during their course. Students can sign in, book reviews and check metrics for their reviews to see how they progressing. Reviewers can sign in, create available time slots and view student's reviews.  
 
 ## User Stories
 - As a Student,<br />
-So that I can have a place to manage my reviews,<br />
+So that I can have a place to manage my process reviews,<br />
 I want to be able to login to my own profile.
 
 - As a Student,<br />
@@ -55,13 +53,13 @@ We aimed to build a functional web application using a current tech stack, which
 
 <b>Front end</b>
 - React
-- React Bootstrap (Login and signup styling)
-- Recharts (library for charts)
+- React Bootstrap (Login and sign up styling)
+- Recharts (React library for displaying charts)
 
 <b>Back end</b>
 - Express
 - Node JS
-- Passport (user verification and authentication)
+- Passport (User verification and authentication)
 - Bcrypt (Password encryption)
 
 <b>Deployment</b>
@@ -105,6 +103,9 @@ We aimed to build a functional web application using a current tech stack, which
 ```
 http://localhost:3000/
 ```
+## Production
+
+Visit http://process-reviews.herokuapp.com/ and sign up as either a student or reviewer!
 
 
 ## Nice To Have
