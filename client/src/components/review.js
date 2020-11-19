@@ -20,23 +20,24 @@ function Review() {
 
     const [user, setUser] = useState([])
 
-    const fetchUser = async (res) => {
-        try {
-            const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
-            const user = await data.json();
-            if (await user == "unauthorised") {
-                history.push("/sign-in")
-            } else {
-                setUser(user)
-            }
-        } catch (e) { console.log(e) }
-    }
+  const fetchUser = async (res) => {
+    try {
+      const data = await fetch('/users/logged-in').catch((err) => console.log(err));
+      const user = await data.json();
+      if (await user == "unauthorised") {
+        history.push("/sign-in")
+      } else {
+        setUser(user)
+      }
+    } catch(e) {console.log(e)}
+}
+
 
     const [review, setReview] = useState({});
     const { id } = useParams();
     console.log(id)
     const fetchReview = async () => {
-        const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
+        const data = await fetch(`/reviews/get-review?id=${id}`);
         const review = await data.json();
 
         setReview(review)
@@ -51,8 +52,10 @@ function Review() {
             setReview({ [e.target.name]: e.target.value })
         }
     }
-    const handleSubmit = () => {
-        fetch('http://localhost:9000/reviews/submit-feedback', {
+
+    const handleSubmit =  () => {
+        fetch('/reviews/submit-feedback', {
+
             method: "POST",
             headers: {
                 "Content-Type": 'application/json'

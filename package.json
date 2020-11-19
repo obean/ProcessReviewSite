@@ -2,8 +2,9 @@
   "scripts": {
   "build": "cd client && npm run build",
   "install-client": "cd client && npm install",
-  "heroku-postbuild": "npm run install-client && npm run build",
-  "start": "cd client && npm start",
+  "install-server": "cd api && npm install",
+  "heroku-postbuild": "npm run install-server && npm run install-client && npm run build",
+  "start": "cd api && npm start",
   "test": "jest",
   "test:watch": "jest --watch"
   } 

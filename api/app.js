@@ -24,10 +24,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // Added this to fetch build from client:
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static('client/build'))
-}
+app.use(express.static(path.join(__dirname, '../client/build')));
+///
 
 
 app.use(logger('dev'));
@@ -41,7 +39,10 @@ app.use(cookieParser());
 app.use(flash());
 
 // Adding seesion/cookies
-app.use(session({ cookie: { name: "cookie" }, 
+app.use(session({ cookie: { 
+  name: "cookie",
+  secure: true
+}, 
   secret: 'woot',
   resave: false, 
   saveUninitialized: false})
