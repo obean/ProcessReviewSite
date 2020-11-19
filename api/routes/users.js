@@ -8,21 +8,24 @@ const bcrypt = require('bcrypt')
 module.exports = ( passport) => {
   //serialize use
   passport.serializeUser(function(user, cb) {
+    console.log(`I've serialized ${user.username}`)
     cb(null, user);
+    
   });
 
   //deserialize
   passport.deserializeUser(function(user, cb) {
+    console.log(`trying to deserialize ${user.username}`)
     models.User.findByPk(user.id, function (err, user) {
       if (err) { return cb(err); }
-      cb(null, user);
+       cb(null, user);
     });
   });
  
   var LocalStrategy = require('passport-local').Strategy;
   passport.use(new LocalStrategy(
     async function(username, password, cb) {
-      // console.log(username, password)
+      console.log(username, password)
         try {
              const user = await models.User.findOne({
              where: { username: username}
@@ -56,7 +59,8 @@ module.exports = ( passport) => {
 
 
   router.get('/logged-in', loggedIn, async function(req, res, id) {
-    const user = await models.user.findOne({where: {id: id}})
+    console.log(`checking if A OK`)
+    const user = await models.user.findByPk(id)
     console.log(user)
     res.status(200).send(JSON.stringify(user))
   })
@@ -74,6 +78,7 @@ module.exports = ( passport) => {
 
 
   function loggedIn(req, res, next) {
+    console.log(req.user)
     var sessionRequest = Object.keys(req.sessionStore.sessions)[Object.keys(req.sessionStore.sessions).length-1]
     if(sessionRequest){
       var user = JSON.parse(req.sessionStore.sessions[sessionRequest]).passport.user
@@ -81,8 +86,7 @@ module.exports = ( passport) => {
     } else {
         res.status(401).send(JSON.stringify("unauthorised"))
       }
-   
-}
+  }
 
   return router
 
