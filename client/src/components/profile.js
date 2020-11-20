@@ -42,10 +42,10 @@ function Profile() {
      <div className="Profile">
        <h1  className="welcome">  hello {user.username}</h1>
        <div className="grid-container">
-         <div className="grid-item"> <BarChartRechart/> </div>
+         <div className="grid-item"> <LineChart /> </div>
          <div className="grid-item"> <ReviewList reviews={reviews} /> </div>
          <div className="grid-item"> <RadarChartRecharts />  </div> 
-         <div className="grid-item"> <LineChart /></div>
+         <div className="grid-item"> <BarChartRechart/></div>
        </div>
       
      </div>

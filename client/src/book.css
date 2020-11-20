@@ -1,0 +1,42 @@
+.availableReviews {
+    font-family: 'Merriweather Sans', sans-serif;    
+    color: silver;
+    font-size: 60px;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .book-border {
+    border-collapse: collapse, silver;
+    border-radius:  5px;
+    text-decoration-color: aliceblue; 
+  }
+
+  .book-button:hover{
+    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    animation:slidebg 5s linear infinite;
+
+  }
+
+  .book-button{
+    display: inline-block;
+    margin-left: 20px;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+            touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+  }
