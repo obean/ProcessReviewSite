@@ -16,20 +16,22 @@ function BookReview() {
   const [user, setUser] = useState([])
 
   const fetchBookings = async (res) => {
-    const data = await fetch('http://localhost:9000/reviews/book');
+    const data = await fetch('/reviews/book');
     const avReviews = await data.json();
     setAvReviews(avReviews)
   }
 
   const fetchUser = async (res) => {
-    const data = await fetch('http://localhost:9000/users/logged-in');
+    const data = await fetch('/users/logged-in');
     const user = await data.json();
     console.log(user)
     setUser(user)
   }
 
-  const bookThis = (id) => {
-    fetch('http://localhost:9000/reviews/book', {
+
+  const bookThis =  (id) => {
+    fetch('/reviews/book', {
+
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

@@ -18,10 +18,10 @@ function RadarChartRecharts() {
       const [user, setUser] = useState([])
 
       const fetchRatings = async (res) => {
-        const data = await fetch('http://localhost:9000/users/logged-in');
+        const data = await fetch('/users/logged-in');
         const user = await data.json();
         setUser(user)
-        const data1 = await fetch(`http://localhost:9000/reviews/ratings?id=${user.id}`);
+        const data1 = await fetch(`/reviews/ratings?id=${user.id}`);
         let ratings = await data1.json();
         if (ratings.length < 1){
            ratings = null

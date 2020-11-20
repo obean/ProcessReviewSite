@@ -20,23 +20,24 @@ function Review() {
 
     const [user, setUser] = useState([])
 
-    const fetchUser = async (res) => {
-        try {
-            const data = await fetch('http://localhost:9000/users/logged-in').catch((err) => console.log(err));
-            const user = await data.json();
-            if (await user == "unauthorised") {
-                history.push("/sign-in")
-            } else {
-                setUser(user)
-            }
-        } catch (e) { console.log(e) }
-    }
+  const fetchUser = async (res) => {
+    try {
+      const data = await fetch('/users/logged-in').catch((err) => console.log(err));
+      const user = await data.json();
+      if (await user == "unauthorised") {
+        history.push("/sign-in")
+      } else {
+        setUser(user)
+      }
+    } catch(e) {console.log(e)}
+}
+
 
     const [review, setReview] = useState({});
     const { id } = useParams();
     console.log(id)
     const fetchReview = async () => {
-        const data = await fetch(`http://localhost:9000/reviews/get-review?id=${id}`);
+        const data = await fetch(`/reviews/get-review?id=${id}`);
         const review = await data.json();
 
         setReview(review)
@@ -51,8 +52,10 @@ function Review() {
             setReview({ [e.target.name]: e.target.value })
         }
     }
-    const handleSubmit = () => {
-        fetch('http://localhost:9000/reviews/submit-feedback', {
+
+    const handleSubmit =  () => {
+        fetch('/reviews/submit-feedback', {
+
             method: "POST",
             headers: {
                 "Content-Type": 'application/json'
@@ -117,38 +120,38 @@ function Review() {
                 </div>
 
                 <div id='TDD_description'>
-                    <h2 class="review_head" onClick={() => hideTddDescription()}> TDD Description {review.TDD_rating}/100</h2>
-                    {showTdd ? <p> {review.TDD_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideTddDescription()}> TDD Description {review.TDD_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showTdd ? <div class="review_border"> <p class="review_text"> {review.TDD_description} </p> </div> : null}
                 </div>
 
                 <div id='Fluency_description'>
-                    <h2 class="review_head" onClick={() => hideFluencyDescription()}> Fluency Description {review.Fluency_rating}/100 </h2>
-                    {showFluency ? <p> {review.Fluency_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideFluencyDescription()}> Fluency Description {review.Fluency_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showFluency ?  <div class="review_border">  <p class="review_text"> {review.Fluency_description} </p> </div> : null}
                 </div>
 
                 <div id='Debug_description'>
-                    <h2 class="review_head" onClick={() => hideDebugDescription()}> Debug Description {review.Debug_rating}/100 </h2>
-                    {showDebug ? <p> {review.Debug_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideDebugDescription()}> Debug Description {review.Debug_rating}/100 <i className="material-icons">unfold_more</i> </h2>
+                    {showDebug ? <div class="review_border">  <p class="review_text"> {review.Debug_description} </p> </div> : null}
                 </div>
 
                 <div id='Model_description'>
-                    <h2 class="review_head" onClick={() => hideModelDescription()}> Model Description {review.Model_rating}/100 </h2>
-                    {showModel ? <p> {review.Model_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideModelDescription()}> Model Description {review.Model_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showModel ? <div class="review_border">  <p class="review_text"> {review.Model_description} </p></div> : null}
                 </div>
 
                 <div id='Refactor_description'>
-                    <h2 class="review_head" onClick={() => hideRefactorDescription()}> Refactor Description {review.Refactor_rating}/100 </h2>
-                    {showRefactor ? <p> {review.Refactor_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideRefactorDescription()}> Refactor Description {review.Refactor_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showRefactor ? <div class="review_border">  <p class="review_text"> {review.Refactor_description} </p></div> : null}
                 </div>
 
                 <div id='Agile_description'>
-                    <h2 class="review_head" onClick={() => hideAgileDescription()}> Agile Description {review.Agile_rating}/100 </h2>
-                    {showAgile ? <p> {review.Agile_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideAgileDescription()}> Agile Description {review.Agile_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showAgile ? <div class="review_border">  <p class="review_text"> {review.Agile_description} </p></div> : null}
                 </div>
 
                 <div id='Maintainability_description'>
-                    <h2 class="review_head" onClick={() => hideMaintainabilityDescription()}> Maintainability Description {review.Maintainability_rating}/100 </h2>
-                    {showMaintain ? <p> {review.Maintainability_description} </p> : null}
+                    <h2 class="review_head" onClick={() => hideMaintainabilityDescription()}> Maintainability Description {review.Maintainability_rating}/100 <i className="material-icons">unfold_more</i></h2>
+                    {showMaintain ? <div class="review_border">  <p class="review_text"> {review.Maintainability_description} </p> </div> : null}
                 </div>
 
 
@@ -166,8 +169,8 @@ function Review() {
                     <h2 class="review_head"> {review.booking_date}</h2>
                 </div> */}
 
-                <div id="submit_button">
-                    <button onClick={() => handleSubmit()}>
+                <div class="submitdiv">
+                    <button id="submit_button" onClick={() => handleSubmit()}>
                         Submit Feedback
                     </button>
                 </div>
@@ -189,9 +192,11 @@ function Review() {
 
                 <div id='TDD_description'>
                     <h2 class="review_head"> TDD Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
+                         
                     <textarea
                         class="text_area_score"
                         rows={1}
@@ -201,7 +206,8 @@ function Review() {
                         maxLength="3"
                         value={review.TDD_rating}
                     />
-                    <label>/100</label>
+                    <label class="review_label">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
@@ -215,6 +221,7 @@ function Review() {
 
                 <div id='Agile_description'>
                     <h2 class="review_head"> Agile Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -228,6 +235,7 @@ function Review() {
                         value={review.Agile_rating}
                     />
                     <label class="review_label" fontSize="110%">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
@@ -241,6 +249,7 @@ function Review() {
 
                 <div id='Fluency_description'>
                     <h2 class="review_head"> Fluency Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -254,6 +263,7 @@ function Review() {
                         value={review.Fluency_rating}
                     />
                     <label class="review_label" fontSize="110%">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
@@ -267,6 +277,7 @@ function Review() {
 
                 <div id='Debug_description'>
                     <h2 class="review_head"> Debug Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -280,6 +291,7 @@ function Review() {
                         value={review.Debug_rating}
                     />
                     <label class="review_label" fontSize="110%">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
@@ -293,6 +305,7 @@ function Review() {
 
                 <div id='Model_description'>
                     <h2 class="review_head"> Model Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -307,6 +320,7 @@ function Review() {
                     />
                     <label class="review_label" fontSize="110%">/100</label>
                     <br />
+                    </div>
                     <textarea
                         class="text_area_review"
                         rows={5}
@@ -319,6 +333,7 @@ function Review() {
 
                 <div id='Refactor_description'>
                     <h2 class="review_head"> Refactor Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -332,6 +347,7 @@ function Review() {
                         value={review.Refactor_rating}
                     />
                     <label class="review_label" fontSize="110%">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
@@ -345,6 +361,7 @@ function Review() {
 
                 <div id='Maintainability_description'>
                     <h2 class="review_head"> Maintainability Description</h2>
+                    <div class="perf_score">
                     <label class="review_label" fontSize="110%">
                         Set Proficiency score:
                          </label>
@@ -358,6 +375,7 @@ function Review() {
                         value={review.Maintainability_rating}
                     />
                     <label class="review_label" fontSize="110%">/100</label>
+                    </div>
                     <br />
                     <textarea
                         class="text_area_review"
