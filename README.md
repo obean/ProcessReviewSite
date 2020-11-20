@@ -40,6 +40,9 @@ I want to be able to set an availability
 So I can give students feedback,<br />
 I want to be able comment on student's reviews
 
+Visualised our ideas through a Miro board:
+
+![Posts](assets/images/miro_screenshot.png) 
 
 ## Team Goals
 
