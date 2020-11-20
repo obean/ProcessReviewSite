@@ -75,7 +75,7 @@ We aimed to build a functional web application using a current tech stack, which
 ```
 + Install packages in both the client and server sides 
 ```
-    cd api
+    cd client
     npm install
 ```
 ```
@@ -90,14 +90,14 @@ We aimed to build a functional web application using a current tech stack, which
   npx sequelize-cli db:seed:all
 ```
 + Start the client and server
-``` 
-  cd api
-  npm start
 ```
-
-``` 
-  cd client
-  npm start
+    cd client
+    npm run build
+```
++ Go back to the root
+```
+    cd ..
+    npm start
 ```
 + Visit the following url in your browser
 ```
