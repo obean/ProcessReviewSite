@@ -47,8 +47,8 @@ const RatingsList = () => {
   
   return (
     <LineChart
-      width={700}
-      height={500}
+      width={800}
+      height={600}
       data={ratings}
       margin={{
         top: 5, right: 30, left: 20, bottom: 5,
