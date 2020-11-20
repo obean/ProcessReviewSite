@@ -26,9 +26,11 @@ function RadarChartRecharts() {
         if (ratings.length < 1){
            ratings = null
         } else {
+          console.log(ratings)
         const latestRatings = Object.entries(ratings.slice(-1)[0]).map(([x, y]) => ({ subject: x.replace('_rating', ''), score: y }));
         console.log(latestRatings);
-        setRatings(latestRatings)
+        // removing the ID that was added last minute...
+        setRatings(latestRatings.slice(1))
         }
       };
 
