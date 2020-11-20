@@ -97,10 +97,13 @@ router.get('/get-review', async function (req, res) {
 //   res.send(JSON.stringify(ratings));
 // });
 
+
+
 router.get('/ratings', async function (req, res, next) {
   if(req.param('id')){
     const ratings = await models.Review.findAll({
       attributes: [
+        "id",
         "TDD_rating",
         "Fluency_rating",
         "Debug_rating",

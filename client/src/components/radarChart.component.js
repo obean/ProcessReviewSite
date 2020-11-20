@@ -34,7 +34,7 @@ function RadarChartRecharts() {
 
       
     return (
-      <RadarChart cx={350} cy={200} outerRadius={170} width={700} height={500} data={ratings}
+      <RadarChart cx={350} cy={200} outerRadius={170} width={700} height={500} data={ratings.sort((a,b) => a.id - b.id)}
       margin={{
           bottom: 50,
         }}>

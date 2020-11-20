@@ -42,15 +42,14 @@ const BarChartRechart = () => {
     }
   
     formatter()
-    console.log(ratings)
 
-   
-
+    // [{"id":52,"TDD_rating":80,"Fluency_rating":70,"Debug_rating":64,"Model_rating":53,"Refactor_rating":68,"Agile_rating":91,"Maintainability_rating":98},{"id":48,"TDD_rating":null,"Fluency_rating":null,"Debug_rating":null,"Model_rating":null,"Refactor_rating":null,"Agile_rating":null,"Maintainability_rating":null},{"id":50,"TDD_rating":70,"Fluency_rating":45,"Debug_rating":60,"Model_rating":64,"Refactor_rating":65,"Agile_rating":64,"Maintainability_rating":67},{"id":49,"TDD_rating":50,"Fluency_rating":20,"Debug_rating":56,"Model_rating":70,"Refactor_rating":70,"Agile_rating":40,"Maintainability_rating":60},{"id":51,"TDD_rating":67,"Fluency_rating":66,"Debug_rating":62,"Model_rating":43,"Refactor_rating":67,"Agile_rating":70,"Maintainability_rating":78},{"id":53,"TDD_rating":null,"Fluency_rating":null,"Debug_rating":null,"Model_rating":null,"Refactor_rating":null,"Agile_rating":null,"Maintainability_rating":null}]
+    
     return (
       <BarChart
         width={800}
         height={600}
-        data={ratings}
+        data={ratings.sort((a,b) => a.id - b.id)}
         margin={{
           top: 10, right: 30, left: 20, bottom: 5,
         }}

@@ -49,7 +49,7 @@ const RatingsList = () => {
     <LineChart
       width={800}
       height={600}
-      data={ratings}
+      data={ratings.sort((a,b) => a.id - b.id)}
       margin={{
         top: 5, right: 30, left: 20, bottom: 5,
       }}

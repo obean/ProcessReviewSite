@@ -14,11 +14,11 @@ function ReviewList(props) {
         body: JSON.stringify({reviewId : id})
     })
   }
-
+  
   return (
     <div className="reviews">
       <h3 className="review_head" data-text="Your booked Reviews">Your Booked Reviews</h3> 
-       { props.reviews.map(review => (
+       { props.reviews.sort((a,b) => a.id - b.id).map(review => (
       <ul class="single-counter-rule">
       <li key={review.id} className="repeating-counter-rule"> 
         <Link to={`reviews/${review.id}`} className="review-item">
