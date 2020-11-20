@@ -92,11 +92,11 @@ module.exports = ( passport) => {
 
 // import User model
 
-/* GET users listing. */
-router.get('/', async function(req, res, next) {
-  const users = await models.User.findAll();
-  res.send(JSON.stringify(users));
-});
+// /* GET users listing. */
+// router.get('/', async function(req, res, next) {
+//   const users = await models.User.findAll();
+//   res.send(JSON.stringify(users));
+// });
 
 
   router.post('/new', async function(req, res, next) {
